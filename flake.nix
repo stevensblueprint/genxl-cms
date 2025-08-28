@@ -11,8 +11,13 @@
 			}; in {
 				devShell = pkgs.mkShell {
 					packages = with pkgs; [
-						nodejs_24
+						bun
+						python313
+						uv
 					];
+					shellHook = ''
+						export UV_PYTHON="$(command -v python3.13)"
+					'';
 				};
 			}
 		);
