@@ -35,8 +35,31 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Custom Two Column',
+          value: 'customTwoColumn',
+        },
       ],
       required: true,
+    },
+    {
+      name: 'badge',
+      type: 'group',
+      admin: {
+        condition: (_, { type } = {}) => ['customTwoColumn'].includes(type),
+      },
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          label: 'Badge Text',
+        },
+        {
+          name: 'link',
+          type: 'text',
+          label: 'Badge Link (optional)',
+        },
+      ],
     },
     {
       name: 'richText',
@@ -62,7 +85,7 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'customTwoColumn'].includes(type),
       },
       relationTo: 'media',
       required: true,
