@@ -1,7 +1,7 @@
 # To use this Dockerfile, you have to set `output: 'standalone'` in your next.config.js file.# From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 # From https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 
-FROM public.ecr.aws/docker/library/node:22-slim AS base
+FROM public.ecr.aws/docker/library/node:22-alpine AS base
 
 # Install dependencies only when needed
 FROM base AS deps
