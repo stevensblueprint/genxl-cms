@@ -152,6 +152,7 @@ export interface Page {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customTwoColumn';
     badge?: {
       text?: string | null;
+      secondaryText?: string | null;
       link?: string | null;
     };
     richText?: {
@@ -1007,6 +1008,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               text?: T;
+              secondaryText?: T;
               link?: T;
             };
         richText?: T;
