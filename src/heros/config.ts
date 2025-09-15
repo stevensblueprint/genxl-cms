@@ -55,9 +55,14 @@ export const hero: Field = {
           label: 'Badge Text',
         },
         {
+          name: 'secondaryText',
+          type: 'text',
+          label: 'Secondary Text',
+        },
+        {
           name: 'link',
           type: 'text',
-          label: 'Badge Link (optional)',
+          label: 'Badge Link',
         },
       ],
     },
