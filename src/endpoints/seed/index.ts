@@ -288,21 +288,69 @@ export const seed = async ({
       data: {
         navItems: [
           {
-            link: {
-              type: 'custom',
-              label: 'Posts',
-              url: '/posts',
-            },
+            label: 'home',
+            url: '/',
+            newTab: false,
+            hasDropdown: false,
           },
           {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id,
+            label: 'about',
+            url: '/about',
+            newTab: false,
+            hasDropdown: true,
+            dropdownItems: [
+              {
+                label: 'about',
+                url: '/about',
+                newTab: false,
               },
-            },
+              {
+                label: 'FAQ',
+                url: '/faq',
+                newTab: false,
+              },
+            ],
+          },
+          {
+            label: 'courses',
+            url: '/courses',
+            newTab: false,
+            hasDropdown: false,
+          },
+          {
+            label: 'team',
+            url: '/team',
+            newTab: false,
+            hasDropdown: false,
+          },
+          {
+            label: 'get involved',
+            url: '/get-involved',
+            newTab: false,
+            hasDropdown: true,
+            dropdownItems: [
+              {
+                label: 'contact us',
+                url: '/contact',
+                newTab: false,
+              },
+              {
+                label: 'donate',
+                url: '/donate',
+                newTab: false,
+              },
+              {
+                label: 'volunteer',
+                url: '/volunteer',
+                newTab: false,
+              },
+            ],
+          },
+          {
+            label: 'partners + sponsors',
+            url: '/gallery',
+            newTab: false,
+            hasDropdown: false,
           },
         ],
       },
