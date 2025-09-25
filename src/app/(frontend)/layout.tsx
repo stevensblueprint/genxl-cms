@@ -12,6 +12,7 @@ import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
+import { CarouselComponent } from '@/Carousel/Component'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
