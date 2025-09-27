@@ -198,7 +198,43 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Gallery)[];
+  layout: (
+    | CallToActionBlock
+    | Gallery
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | {
+        sponsors?: {
+          heading?: string | null;
+          description?: string | null;
+          logos?:
+            | {
+                media: string | Media;
+                alt?: string | null;
+                href?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        partners?: {
+          heading?: string | null;
+          description?: string | null;
+          logos?:
+            | {
+                media: string | Media;
+                alt?: string | null;
+                href?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'sponsorsPartners';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -1056,6 +1092,40 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        sponsorsPartners?:
+          | T
+          | {
+              sponsors?:
+                | T
+                | {
+                    heading?: T;
+                    description?: T;
+                    logos?:
+                      | T
+                      | {
+                          media?: T;
+                          alt?: T;
+                          href?: T;
+                          id?: T;
+                        };
+                  };
+              partners?:
+                | T
+                | {
+                    heading?: T;
+                    description?: T;
+                    logos?:
+                      | T
+                      | {
+                          media?: T;
+                          alt?: T;
+                          href?: T;
+                          id?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
         gallery?: T | GallerySelect<T>;
       };
   meta?:
