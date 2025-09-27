@@ -204,10 +204,9 @@ export interface Page {
     | ArchiveBlock
     | FormBlock
     | {
-        title: string;
-        caption?: string | null;
         sponsors?: {
           heading?: string | null;
+          description?: string | null;
           logos?:
             | {
                 media: string | Media;
@@ -219,6 +218,7 @@ export interface Page {
         };
         partners?: {
           heading?: string | null;
+          description?: string | null;
           logos?:
             | {
                 media: string | Media;
@@ -1093,12 +1093,11 @@ export interface PagesSelect<T extends boolean = true> {
         sponsorsPartners?:
           | T
           | {
-              title?: T;
-              caption?: T;
               sponsors?:
                 | T
                 | {
                     heading?: T;
+                    description?: T;
                     logos?:
                       | T
                       | {
@@ -1112,6 +1111,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     heading?: T;
+                    description?: T;
                     logos?:
                       | T
                       | {
