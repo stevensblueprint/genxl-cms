@@ -5,18 +5,16 @@ import type { Media as MediaDoc } from '@/payload-types'
 import React from 'react'
 
 type Logo = { media?: MediaDoc | string; alt?: string; href?: string }
-type Section = { heading?: string; logos?: Logo[] }
+type Section = { heading?: string; description?: string; logos?: Logo[] }
 
 type Props = {
-  title?: string
-  caption?: string
   sponsors?: Section
   partners?: Section
 }
 
-export const SponsorsPartnersBlock: React.FC<Props> = ({ title, caption, sponsors, partners }) => {
+export const SponsorsPartnersBlock: React.FC<Props> = ({ sponsors, partners }) => {
   const renderSection = (section?: Section) => {
-    if (!section?.logos?.length) return null
+    if (!section || !(section.heading || section.description || section.logos?.length)) return null
 
     return (
       <section className="container my-12">
@@ -24,6 +22,10 @@ export const SponsorsPartnersBlock: React.FC<Props> = ({ title, caption, sponsor
           <h2 className="mb-3 text-center text-2xl md:text-3xl font-semibold tracking-tight">
             {section.heading}
           </h2>
+        )}
+
+        {section.description && (
+          <p className="mb-6 text-center text-muted-foreground">{section.description}</p>
         )}
 
         {/* 4 logos per row from sm+; 2 per row on very small screens */}
@@ -56,21 +58,8 @@ export const SponsorsPartnersBlock: React.FC<Props> = ({ title, caption, sponsor
   }
 
   return (
-    // use site tokens so it inherits theme (light/dark) + fonts
-    <div className="bg-background text-foreground py-16">
-      <div className="container text-center">
-        {/* match heading style used elsewhere */}
-        {title && <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">{title}</h1>}
-
-        {/* subtitle/caption uses the muted token */}
-        {caption && <p className="mt-2 text-muted-foreground">{caption}</p>}
-      </div>
-
+    <div className="py-12">
       {renderSection(sponsors)}
-
-      {/* divider uses the global border token */}
-      <div className="container my-10 h-px bg-border" />
-
       {renderSection(partners)}
     </div>
   )
