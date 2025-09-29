@@ -198,7 +198,7 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Gallery)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Gallery | MeatballMenu)[];
   meta?: {
     title?: string | null;
     /**
@@ -760,6 +760,34 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenu".
+ */
+export interface MeatballMenu {
+  title: string;
+  subtitle?: string | null;
+  sections?:
+    | {
+        image?: (string | null) | Media;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Enter a hex color code (e.g., #ffffff for white, #000000 for black)
+   */
+  backgroundColor?: string | null;
+  button?: {
+    show?: boolean | null;
+    text?: string | null;
+    link?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'meatballMenu';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1057,6 +1085,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         gallery?: T | GallerySelect<T>;
+        meatballMenu?: T | MeatballMenuSelect<T>;
       };
   meta?:
     | T
@@ -1168,6 +1197,32 @@ export interface GallerySelect<T extends boolean = true> {
         media?: T;
         caption?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenu_select".
+ */
+export interface MeatballMenuSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  sections?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  backgroundColor?: T;
+  button?:
+    | T
+    | {
+        show?: T;
+        text?: T;
+        link?: T;
       };
   id?: T;
   blockName?: T;

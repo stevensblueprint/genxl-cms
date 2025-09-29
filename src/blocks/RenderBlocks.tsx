@@ -7,6 +7,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { Gallery } from '@/blocks/Gallery/Component'
+import { MeatballMenu } from '@/blocks/MeatballMenu/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
 const blockComponents = {
@@ -15,6 +16,7 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   gallery: Gallery,
+  meatballMenu: MeatballMenu,
   mediaBlock: MediaBlock,
 }
 
