@@ -238,6 +238,10 @@ export interface Page {
         heading?: string | null;
         subheading?: string | null;
         description?: string | null;
+        button?: {
+          label?: string | null;
+          url?: string | null;
+        };
         image?: (string | null) | Media;
         id?: string | null;
         blockName?: string | null;
@@ -1142,6 +1146,12 @@ export interface PagesSelect<T extends boolean = true> {
               heading?: T;
               subheading?: T;
               description?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
               image?: T;
               id?: T;
               blockName?: T;
