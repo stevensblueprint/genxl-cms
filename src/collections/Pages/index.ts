@@ -14,6 +14,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
+import { About } from '../../blocks/About/config'
 
 import {
   MetaDescriptionField,
@@ -77,7 +78,16 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Gallery, SponsorsPartners],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                Gallery,
+                SponsorsPartners,
+                About,
+              ],
 
               required: true,
               admin: {

@@ -9,11 +9,13 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { Gallery } from '@/blocks/Gallery/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
+import { AboutBlock } from '@/blocks/About/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
+  about: AboutBlock,
   formBlock: FormBlock,
   gallery: Gallery,
   mediaBlock: MediaBlock,

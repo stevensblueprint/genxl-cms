@@ -200,11 +200,11 @@ export interface Page {
   };
   layout: (
     | CallToActionBlock
-    | Gallery
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
     | FormBlock
+    | Gallery
     | {
         sponsors?: {
           heading?: string | null;
@@ -233,6 +233,19 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'sponsorsPartners';
+      }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        description?: string | null;
+        button?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        image?: (string | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'about';
       }
   )[];
   meta?: {
@@ -1092,6 +1105,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        gallery?: T | GallerySelect<T>;
         sponsorsPartners?:
           | T
           | {
@@ -1126,7 +1140,22 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        gallery?: T | GallerySelect<T>;
+        about?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
