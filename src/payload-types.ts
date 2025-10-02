@@ -200,11 +200,11 @@ export interface Page {
   };
   layout: (
     | CallToActionBlock
-    | Gallery
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
     | FormBlock
+    | Gallery
     | {
         sponsors?: {
           heading?: string | null;
@@ -233,6 +233,21 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'sponsorsPartners';
+      }
+    | {
+        image: string | Media;
+        title: string;
+        grade: string;
+        duration: string;
+        classSize: string;
+        buttonLabel: string;
+        /**
+         * Paste a URL or a site-relative slug like /courses/scratch
+         */
+        buttonHref?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courseCard';
       }
   )[];
   meta?: {
@@ -1092,6 +1107,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        gallery?: T | GallerySelect<T>;
         sponsorsPartners?:
           | T
           | {
@@ -1126,7 +1142,19 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        gallery?: T | GallerySelect<T>;
+        courseCard?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              grade?: T;
+              duration?: T;
+              classSize?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
