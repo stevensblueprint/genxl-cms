@@ -104,11 +104,13 @@ export interface Config {
     header: Header;
     footer: Footer;
     carousel: Carousel;
+    accordion: Accordion;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     carousel: CarouselSelect<false> | CarouselSelect<true>;
+    accordion: AccordionSelect<false> | AccordionSelect<true>;
   };
   locale: null;
   user: User & {
@@ -200,11 +202,11 @@ export interface Page {
   };
   layout: (
     | CallToActionBlock
-    | Gallery
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
     | FormBlock
+    | Gallery
     | {
         sponsors?: {
           heading?: string | null;
@@ -1092,6 +1094,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        gallery?: T | GallerySelect<T>;
         sponsorsPartners?:
           | T
           | {
@@ -1126,7 +1129,6 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        gallery?: T | GallerySelect<T>;
       };
   meta?:
     | T
@@ -1741,6 +1743,23 @@ export interface Carousel {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accordion".
+ */
+export interface Accordion {
+  id: string;
+  title?: string | null;
+  questions?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1799,6 +1818,23 @@ export interface CarouselSelect<T extends boolean = true> {
     | {
         description?: T;
         name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accordion_select".
+ */
+export interface AccordionSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
         id?: T;
       };
   updatedAt?: T;
