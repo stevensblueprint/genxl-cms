@@ -28,7 +28,7 @@ export function AccordionClient({ accordionData }: AccordionClientProps) {
         {questions.map((question) => {
           const isOpen = openItem === question.id
           return (
-            <div key={question.id} className="border-b-2 border-black">
+            <div key={question.id} className="border-b-2 border-blue-800">
               <button
                 className="text-2xl font-bold text-black p-10 text-left w-full flex justify-between items-center hover:bg-blue-50 transition-colors"
                 onClick={() => toggleItem(question.id || '')}
