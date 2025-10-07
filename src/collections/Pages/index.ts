@@ -7,13 +7,14 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { Gallery } from '../../blocks/Gallery/config'
+import { MeatballMenu } from '../../blocks/MeatballMenu/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { hero } from '@/heros/config'
+import { Volunteer } from '../../blocks/Volunteer/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
-import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
 
 import {
   MetaDescriptionField,
@@ -77,8 +78,16 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Gallery, SponsorsPartners],
-
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                Gallery,
+                MeatballMenu,
+                Volunteer,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

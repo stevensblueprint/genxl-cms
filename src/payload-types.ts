@@ -200,40 +200,13 @@ export interface Page {
   };
   layout: (
     | CallToActionBlock
-    | Gallery
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
     | FormBlock
-    | {
-        sponsors?: {
-          heading?: string | null;
-          description?: string | null;
-          logos?:
-            | {
-                media: string | Media;
-                alt?: string | null;
-                href?: string | null;
-                id?: string | null;
-              }[]
-            | null;
-        };
-        partners?: {
-          heading?: string | null;
-          description?: string | null;
-          logos?:
-            | {
-                media: string | Media;
-                alt?: string | null;
-                href?: string | null;
-                id?: string | null;
-              }[]
-            | null;
-        };
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'sponsorsPartners';
-      }
+    | Gallery
+    | MeatballMenu
+    | Volunteer
   )[];
   meta?: {
     title?: string | null;
@@ -796,6 +769,55 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenu".
+ */
+export interface MeatballMenu {
+  title: string;
+  subtitle?: string | null;
+  sections?:
+    | {
+        image?: (string | null) | Media;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Enter a hex color code (e.g., #ffffff for white, #000000 for black)
+   */
+  backgroundColor?: string | null;
+  button?: {
+    show?: boolean | null;
+    text?: string | null;
+    link?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'meatballMenu';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Volunteer".
+ */
+export interface Volunteer {
+  title: string;
+  caption?: string | null;
+  cards?:
+    | {
+        title: string;
+        caption?: string | null;
+        buttonText?: string | null;
+        buttonLink?: string | null;
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'volunteer';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1092,41 +1114,9 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
-        sponsorsPartners?:
-          | T
-          | {
-              sponsors?:
-                | T
-                | {
-                    heading?: T;
-                    description?: T;
-                    logos?:
-                      | T
-                      | {
-                          media?: T;
-                          alt?: T;
-                          href?: T;
-                          id?: T;
-                        };
-                  };
-              partners?:
-                | T
-                | {
-                    heading?: T;
-                    description?: T;
-                    logos?:
-                      | T
-                      | {
-                          media?: T;
-                          alt?: T;
-                          href?: T;
-                          id?: T;
-                        };
-                  };
-              id?: T;
-              blockName?: T;
-            };
         gallery?: T | GallerySelect<T>;
+        meatballMenu?: T | MeatballMenuSelect<T>;
+        volunteer?: T | VolunteerSelect<T>;
       };
   meta?:
     | T
@@ -1237,6 +1227,52 @@ export interface GallerySelect<T extends boolean = true> {
     | {
         media?: T;
         caption?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenu_select".
+ */
+export interface MeatballMenuSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  sections?:
+    | T
+    | {
+        image?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  backgroundColor?: T;
+  button?:
+    | T
+    | {
+        show?: T;
+        text?: T;
+        link?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Volunteer_select".
+ */
+export interface VolunteerSelect<T extends boolean = true> {
+  title?: T;
+  caption?: T;
+  cards?:
+    | T
+    | {
+        title?: T;
+        caption?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        image?: T;
         id?: T;
       };
   id?: T;
