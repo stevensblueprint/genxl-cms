@@ -14,7 +14,8 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
-import { CourseCard } from '../../blocks/CourseCard/config'
+//import { CourseCard } from '../../blocks/CourseCard/config'
+import { NumbersBlock } from '../../blocks/NumbersBlock/config'
 
 import {
   MetaDescriptionField,
@@ -86,7 +87,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Gallery,
                 SponsorsPartners,
-                CourseCard,
+                //CourseCard,
+                NumbersBlock,
               ],
 
               required: true,

@@ -10,6 +10,7 @@ import { Gallery } from '@/blocks/Gallery/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
+import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   sponsorsPartners: SponsorsPartnersBlock,
   courseCard: CourseCardBlock,
+  NumbersBlock: NumbersBlock,
 }
 
 export const RenderBlocks: React.FC<{
