@@ -200,11 +200,11 @@ export interface Page {
   };
   layout: (
     | CallToActionBlock
-    | Gallery
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
     | FormBlock
+    | Gallery
     | {
         sponsors?: {
           heading?: string | null;
@@ -234,6 +234,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'sponsorsPartners';
       }
+    | ContactFormBlock
   )[];
   meta?: {
     title?: string | null;
@@ -796,6 +797,22 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock".
+ */
+export interface ContactFormBlock {
+  title: string;
+  description?: string | null;
+  firstName: string;
+  lastName?: string | null;
+  email: string;
+  message: string;
+  submitButtonText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact-form-block';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1092,6 +1109,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        gallery?: T | GallerySelect<T>;
         sponsorsPartners?:
           | T
           | {
@@ -1126,7 +1144,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        gallery?: T | GallerySelect<T>;
+        'contact-form-block'?: T | ContactFormBlockSelect<T>;
       };
   meta?:
     | T
@@ -1239,6 +1257,21 @@ export interface GallerySelect<T extends boolean = true> {
         caption?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock_select".
+ */
+export interface ContactFormBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  message?: T;
+  submitButtonText?: T;
   id?: T;
   blockName?: T;
 }
