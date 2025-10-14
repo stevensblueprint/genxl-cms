@@ -22,7 +22,7 @@ export default function TeamPage() {
               />
             </div>
             <h2 className="text-xl font-semibold mb-2 text-white">Nikita Mullangi</h2>
-            <p className="text-base font-thin text-white">Executive President</p>
+            <p className="text-base font-thin text-gray-300">Executive President</p>
           </div>
 
           {/* Smera Dhananjaya */}
@@ -35,18 +35,18 @@ export default function TeamPage() {
               />
             </div>
             <h2 className="text-xl font-semibold mb-2 text-white">Smera Dhananjaya</h2>
-            <p className="text-base font-thin text-white">Co-Founder</p>
+            <p className="text-base font-thin text-gray-300">Co-Founder</p>
           </div>
         </div>
       </div>
 
       {/* Board of Directors Section */}
       <div className="w-full px-8 py-12 bg-gray-900">
-        <h2 className="text-3xl font-semibold text-center mb-12 text-white">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
           Board of Directors
         </h2>
         
-         <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 max-w-4xl mx-auto">
           {/* Vidhi Patel */}
           <div className="text-center">
             <div className="relative mb-4">
@@ -56,8 +56,8 @@ export default function TeamPage() {
                 className="w-64 h-64 rounded-full mx-auto object-cover"
               />
             </div>
-             <h3 className="text-xl font-normal mb-4 text-white">Vidhi Patel</h3>
-             <p className="text-base text-gray-300">Vice President</p>
+            <h3 className="text-xl font-normal mb-4 text-white">Vidhi Patel</h3>
+            <p className="text-base text-gray-300">Vice President</p>
           </div>
 
           {/* Clara Innella */}
@@ -69,8 +69,8 @@ export default function TeamPage() {
                 className="w-64 h-64 rounded-full mx-auto object-cover"
               />
             </div>
-             <h3 className="text-xl font-normal mb-4 text-white">Clara Innella</h3>
-             <p className="text-base text-gray-300">Director of Outreach</p>
+            <h3 className="text-xl font-normal mb-4 text-white">Clara Innella</h3>
+            <p className="text-base text-gray-300">Director of Outreach</p>
           </div>
 
           {/* Renee Wu */}
@@ -82,8 +82,8 @@ export default function TeamPage() {
                 className="w-64 h-64 rounded-full mx-auto object-cover"
               />
             </div>
-             <h3 className="text-xl font-normal mb-4 text-white">Renee Wu</h3>
-             <p className="text-base text-gray-300">Social Media Manager</p>
+            <h3 className="text-xl font-normal mb-4 text-white">Renee Wu</h3>
+            <p className="text-base text-gray-300">Social Media Manager</p>
           </div>
 
           {/* Divya Peddagali */}
@@ -95,8 +95,8 @@ export default function TeamPage() {
                 className="w-64 h-64 rounded-full mx-auto object-cover"
               />
             </div>
-             <h3 className="text-xl font-normal mb-4 text-white">Divya Peddagali</h3>
-             <p className="text-base text-gray-300">Director of Expansions</p>
+            <h3 className="text-xl font-normal mb-4 text-white">Divya Peddagali</h3>
+            <p className="text-base text-gray-300">Director of Expansions</p>
           </div>
         </div>
       </div>
