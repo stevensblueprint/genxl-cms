@@ -7,6 +7,7 @@ import type { Footer } from '@/payload-types'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import { Chatbot } from '@/components/Chatbot/Chatbot'
 
 export async function Footer() {
   // Get footer data from Payload CMS global settings
@@ -141,16 +142,13 @@ export async function Footer() {
           </div>
         </div>
 
-        {/* Message Us Button - Bottom Right */}
-        <div className="absolute bottom-4 right-4">
-          {/* ... keep your button code exactly as you wrote it ... */}
-        </div>
-
         {/* Theme Selector */}
         <div className="mt-8 flex justify-center">
           <ThemeSelector />
         </div>
       </div>
+      {/* Chatbot */}
+      <Chatbot />
     </footer>
   )
 }
