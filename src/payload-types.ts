@@ -103,10 +103,14 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    carousel: Carousel;
+    accordion: Accordion;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    carousel: CarouselSelect<false> | CarouselSelect<true>;
+    accordion: AccordionSelect<false> | AccordionSelect<true>;
   };
   locale: null;
   user: User & {
@@ -152,6 +156,7 @@ export interface Page {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customTwoColumn';
     badge?: {
       text?: string | null;
+      secondaryText?: string | null;
       link?: string | null;
     };
     richText?: {
@@ -195,7 +200,58 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | Gallery
+    | {
+        sponsors?: {
+          heading?: string | null;
+          description?: string | null;
+          logos?:
+            | {
+                media: string | Media;
+                alt?: string | null;
+                href?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        partners?: {
+          heading?: string | null;
+          description?: string | null;
+          logos?:
+            | {
+                media: string | Media;
+                alt?: string | null;
+                href?: string | null;
+                id?: string | null;
+              }[]
+            | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'sponsorsPartners';
+      }
+    | {
+        image: string | Media;
+        title: string;
+        grade: string;
+        duration: string;
+        classSize: string;
+        buttonLabel: string;
+        /**
+         * Paste a URL or a site-relative slug like /courses/scratch
+         */
+        buttonHref?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courseCard';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -740,6 +796,23 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery".
+ */
+export interface Gallery {
+  title?: string | null;
+  images?:
+    | {
+        media: string | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1007,6 +1080,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               text?: T;
+              secondaryText?: T;
               link?: T;
             };
         richText?: T;
@@ -1035,6 +1109,54 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        gallery?: T | GallerySelect<T>;
+        sponsorsPartners?:
+          | T
+          | {
+              sponsors?:
+                | T
+                | {
+                    heading?: T;
+                    description?: T;
+                    logos?:
+                      | T
+                      | {
+                          media?: T;
+                          alt?: T;
+                          href?: T;
+                          id?: T;
+                        };
+                  };
+              partners?:
+                | T
+                | {
+                    heading?: T;
+                    description?: T;
+                    logos?:
+                      | T
+                      | {
+                          media?: T;
+                          alt?: T;
+                          href?: T;
+                          id?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        courseCard?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              grade?: T;
+              duration?: T;
+              classSize?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1131,6 +1253,22 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery_select".
+ */
+export interface GallerySelect<T extends boolean = true> {
+  title?: T;
+  images?:
+    | T
+    | {
+        media?: T;
+        caption?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1562,23 +1700,23 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: string;
+  /**
+   * Add navigation items for the header menu
+   */
   navItems?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        label: string;
+        url: string;
+        newTab?: boolean | null;
+        hasDropdown?: boolean | null;
+        dropdownItems?:
+          | {
+              label: string;
+              url: string;
+              newTab?: boolean | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1616,20 +1754,57 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel".
+ */
+export interface Carousel {
+  id: string;
+  title?: string | null;
+  reviews?:
+    | {
+        description?: string | null;
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accordion".
+ */
+export interface Accordion {
+  id: string;
+  title?: string | null;
+  questions?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
-        link?:
+        label?: T;
+        url?: T;
+        newTab?: T;
+        hasDropdown?: T;
+        dropdownItems?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
               label?: T;
+              url?: T;
+              newTab?: T;
+              id?: T;
             };
         id?: T;
       };
@@ -1654,6 +1829,40 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel_select".
+ */
+export interface CarouselSelect<T extends boolean = true> {
+  title?: T;
+  reviews?:
+    | T
+    | {
+        description?: T;
+        name?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accordion_select".
+ */
+export interface AccordionSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
         id?: T;
       };
   updatedAt?: T;
