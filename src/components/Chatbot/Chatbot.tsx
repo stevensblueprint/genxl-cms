@@ -69,7 +69,7 @@ export function Chatbot() {
       {/* Chatbot Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-5 right-6 z-50 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 flex items-center gap-3"
+        className="fixed bottom-5 right-6 z-50 bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-xl shadow-lg transition-all duration-300 flex items-center gap-3"
       >
         <div className="relative">
           <img
@@ -77,9 +77,9 @@ export function Chatbot() {
             alt="GenXL Logo"
             className="w-8 h-8 rounded-full object-cover"
           />
-          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-yellow-400"></div>
         </div>
-        <span className="font-medium">Message</span>
+        <span className="font-bold">Message Us!</span>
       </button>
 
       {/* Chatbot Dropdown */}
