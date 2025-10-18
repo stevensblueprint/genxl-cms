@@ -236,21 +236,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'sponsorsPartners';
       }
-    | {
-        image: string | Media;
-        title: string;
-        grade: string;
-        duration: string;
-        classSize: string;
-        buttonLabel: string;
-        /**
-         * Paste a URL or a site-relative slug like /courses/scratch
-         */
-        buttonHref?: string | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'courseCard';
-      }
+    | DonationFormBlock
   )[];
   meta?: {
     title?: string | null;
@@ -813,6 +799,18 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock".
+ */
+export interface DonationFormBlock {
+  heading?: string | null;
+  description?: string | null;
+  form?: FormBlock[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'donate';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1144,19 +1142,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        courseCard?:
-          | T
-          | {
-              image?: T;
-              title?: T;
-              grade?: T;
-              duration?: T;
-              classSize?: T;
-              buttonLabel?: T;
-              buttonHref?: T;
-              id?: T;
-              blockName?: T;
-            };
+        donate?: T | DonationFormBlockSelect<T>;
       };
   meta?:
     | T
@@ -1268,6 +1254,21 @@ export interface GallerySelect<T extends boolean = true> {
         media?: T;
         caption?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock_select".
+ */
+export interface DonationFormBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  form?:
+    | T
+    | {
+        formBlock?: T | FormBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
