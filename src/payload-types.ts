@@ -242,6 +242,10 @@ export interface Page {
         grade: string;
         duration: string;
         classSize: string;
+        /**
+         * Use same category as dropdown for filtering courses
+         */
+        category: string;
         buttonLabel: string;
         /**
          * Paste a URL or a site-relative slug like /courses/scratch
@@ -1152,6 +1156,7 @@ export interface PagesSelect<T extends boolean = true> {
               grade?: T;
               duration?: T;
               classSize?: T;
+              category?: T;
               buttonLabel?: T;
               buttonHref?: T;
               id?: T;

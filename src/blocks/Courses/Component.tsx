@@ -69,7 +69,7 @@ export const CoursesBlock: React.FC<Props> = ({ title, filters, cards }) => {
         {visibleCards.map((block, i) => {
           if (!block || (block as any).blockType !== 'courseCard') return null
           // Render existing CourseCard block component
-          return <CoursesBlock key={i} {...(block as any)} />
+          return <CourseCardBlock key={i} {...(block as any)} />
         })}
       </div>
     </section>
