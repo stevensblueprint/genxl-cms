@@ -15,6 +15,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
+import { DropdownBlock } from '../../blocks/Form/Dropdown/config'
 
 import {
   MetaDescriptionField,
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Gallery,
                 SponsorsPartners,
                 CourseCard,
+                DropdownBlock,
               ],
 
               required: true,
