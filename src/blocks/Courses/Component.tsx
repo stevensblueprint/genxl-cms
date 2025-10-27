@@ -21,18 +21,16 @@ export const CoursesBlock: React.FC<Props> = ({ title, filters, cards }) => {
 
   const hasFilters = !!filters?.length
 
-  // Build the rendered list based on selected filter.
-  const visibleCards = React.useMemo(() => {
-    if (!cards?.length) return []
-    if (!selected) return cards
-    return cards.filter((block) => {
-      // Expect the CourseCard to carry a "category"
-      const anyBlock = block as any
-      const category =
-        anyBlock?.category ?? anyBlock?.fields?.category ?? anyBlock?.data?.category ?? ''
-      return String(category).toLowerCase() === String(selected).toLowerCase()
-    })
-  }, [cards, selected])
+  const visibleCards = !cards?.length
+    ? []
+    : !selected
+      ? cards
+      : cards.filter((block) => {
+          const anyBlock = block as any
+          const category =
+            anyBlock?.category ?? anyBlock?.fields?.category ?? anyBlock?.data?.category ?? ''
+          return String(category).toLowerCase() === String(selected).toLowerCase()
+        })
 
   return (
     <section className="container my-16">
