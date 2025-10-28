@@ -237,6 +237,25 @@ export interface Page {
         blockType: 'sponsorsPartners';
       }
     | DonationFormBlock
+    | {
+        image: string | Media;
+        title: string;
+        grade: string;
+        duration: string;
+        classSize: string;
+        /**
+         * Use same category as dropdown for filtering courses
+         */
+        category: string;
+        buttonLabel: string;
+        /**
+         * Paste a URL or a site-relative slug like /courses/scratch
+         */
+        buttonHref?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courseCard';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1143,6 +1162,20 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         donate?: T | DonationFormBlockSelect<T>;
+        courseCard?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              grade?: T;
+              duration?: T;
+              classSize?: T;
+              category?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
