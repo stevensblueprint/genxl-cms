@@ -14,6 +14,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
+import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
 
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 Gallery,
                 SponsorsPartners,
+                DonationForm,
                 CourseCard,
                 CoursesBlock,
               ],
