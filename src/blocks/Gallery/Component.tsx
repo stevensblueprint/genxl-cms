@@ -94,28 +94,21 @@ export const Gallery: React.FC<Props> = (props) => {
               const row = Math.floor(position / 4)
               const col = position % 4
 
-              // Define aspect ratios based on position
-              // Row 1: rectangular → squareish → rectangular → squareish
-              // Row 2: squareish → rectangular → squareish → rectangular
               let aspectRatioClass = ''
               let alignmentClass = ''
               if (row === 0) {
-                // First row - no special alignment needed
                 if (col === 0 || col === 2) {
-                  aspectRatioClass = 'aspect-[16/9]' // rectangular (landscape) - wider
+                  aspectRatioClass = 'aspect-[16/9]'
                 } else {
-                  aspectRatioClass = 'aspect-[4/3]' // more rectangular than square but not as wide as 16:9
+                  aspectRatioClass = 'aspect-[4/3]'
                 }
               } else {
-                // Second row - align squares up so their bottom aligns with rectangle bottoms
-                // Rectangles are 16:9 (height = 56.25% of width), squares are 4:3 (height = 75% of width)
-                // To align bottoms: square needs to move up by (75% - 56.25%) = 18.75% of its width
                 if (col === 0 || col === 2) {
-                  aspectRatioClass = 'aspect-[4/3]' // more rectangular than square but not as wide as 16:9
-                  alignmentClass = 'self-end -mt-[18.75%]' // Align to bottom and move up to match rectangle bottoms
+                  aspectRatioClass = 'aspect-[4/3]'
+                  alignmentClass = 'md:self-end md:-mt-[18.75%]'
                 } else {
-                  aspectRatioClass = 'aspect-[16/9]' // rectangular (landscape) - wider
-                  alignmentClass = 'self-end' // Align to bottom
+                  aspectRatioClass = 'aspect-[16/9]'
+                  alignmentClass = 'md:self-end'
                 }
               }
 
@@ -131,7 +124,6 @@ export const Gallery: React.FC<Props> = (props) => {
                 >
                   <div className="relative w-full h-full">
                     {mediaIsVideo ? (
-                      // For videos, show a thumbnail/poster image with play button
                       <div className="relative w-full h-full">
                         <video
                           className="w-full h-full object-cover rounded-2xl"
