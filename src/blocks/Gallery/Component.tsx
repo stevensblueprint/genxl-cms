@@ -81,7 +81,7 @@ export const Gallery: React.FC<Props> = (props) => {
 
         {/* Gallery Grid */}
         <div
-          className={cn('columns-1 gap-6 space-y-6 md:columns-2 lg:columns-3 xl:columns-4', {
+          className={cn('grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6', {
             container: !disableInnerContainer,
           })}
         >
@@ -89,18 +89,52 @@ export const Gallery: React.FC<Props> = (props) => {
             if (typeof item.media === 'object' && item.media !== null) {
               const mediaIsVideo = isVideo(item.media)
 
+              // Calculate position in grid (0-7 for first 8 items, then repeats pattern)
+              const position = index % 8
+              const row = Math.floor(position / 4)
+              const col = position % 4
+
+              // Define aspect ratios based on position
+              // Row 1: rectangular → squareish → rectangular → squareish
+              // Row 2: squareish → rectangular → squareish → rectangular
+              let aspectRatioClass = ''
+              let alignmentClass = ''
+              if (row === 0) {
+                // First row - no special alignment needed
+                if (col === 0 || col === 2) {
+                  aspectRatioClass = 'aspect-[16/9]' // rectangular (landscape) - wider
+                } else {
+                  aspectRatioClass = 'aspect-[4/3]' // more rectangular than square but not as wide as 16:9
+                }
+              } else {
+                // Second row - align squares up so their bottom aligns with rectangle bottoms
+                // Rectangles are 16:9 (height = 56.25% of width), squares are 4:3 (height = 75% of width)
+                // To align bottoms: square needs to move up by (75% - 56.25%) = 18.75% of its width
+                if (col === 0 || col === 2) {
+                  aspectRatioClass = 'aspect-[4/3]' // more rectangular than square but not as wide as 16:9
+                  alignmentClass = 'self-end -mt-[18.75%]' // Align to bottom and move up to match rectangle bottoms
+                } else {
+                  aspectRatioClass = 'aspect-[16/9]' // rectangular (landscape) - wider
+                  alignmentClass = 'self-end' // Align to bottom
+                }
+              }
+
               return (
                 <div
                   key={index}
-                  className="group relative cursor-pointer overflow-hidden rounded-2xl bg-gray-100 transition-transform duration-300 hover:scale-105 break-inside-avoid mb-6"
+                  className={cn(
+                    'group relative cursor-pointer overflow-hidden rounded-2xl bg-gray-100 transition-transform duration-300 hover:scale-105',
+                    aspectRatioClass,
+                    alignmentClass,
+                  )}
                   onClick={() => openModal(index)}
                 >
-                  <div className="relative">
+                  <div className="relative w-full h-full">
                     {mediaIsVideo ? (
                       // For videos, show a thumbnail/poster image with play button
-                      <div className="relative">
+                      <div className="relative w-full h-full">
                         <video
-                          className="w-full h-auto object-cover rounded-2xl"
+                          className="w-full h-full object-cover rounded-2xl"
                           muted
                           playsInline
                           preload="metadata"
@@ -125,7 +159,7 @@ export const Gallery: React.FC<Props> = (props) => {
                       <>
                         <Media
                           resource={item.media}
-                          imgClassName="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-110 rounded-2xl"
+                          imgClassName="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-2xl"
                         />
                         <div className="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-20 rounded-2xl" />
                       </>
