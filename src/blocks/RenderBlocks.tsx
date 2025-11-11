@@ -12,6 +12,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
+import { BigVideoImageBlock } from '@/blocks/BigVideoImage/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -24,6 +25,7 @@ const blockComponents = {
   sponsorsPartners: SponsorsPartnersBlock,
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
+  bigVideoImage: BigVideoImageBlock,
 }
 
 export const RenderBlocks: React.FC<{
