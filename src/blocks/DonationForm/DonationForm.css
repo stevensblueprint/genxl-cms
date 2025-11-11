@@ -1,0 +1,125 @@
+/* Custom styles for DonationForm block */
+.donation-form-wrapper {
+  /* Override the default FormBlock container max-width */
+  max-width: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.donation-form-wrapper .container {
+  /* Override FormBlock's container styles */
+  max-width: 600px !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+.donation-form-wrapper .border {
+  /* Customize the form border */
+  border-color: #e5e7eb !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%) !important;
+}
+
+.donation-form-wrapper .p-4 {
+  /* Customize form padding */
+  padding: 2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.donation-form-wrapper button {
+  /* Customize submit button */
+  background-color: #059669 !important;
+  color: white !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  width: 100% !important;
+  margin-top: 1rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.donation-form-wrapper button:hover {
+  background-color: #047857 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3) !important;
+}
+
+.donation-form-wrapper input,
+.donation-form-wrapper textarea,
+.donation-form-wrapper select {
+  /* Customize form inputs */
+  border: 2px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  padding: 0.75rem !important;
+  font-size: 1rem !important;
+  background-color: white !important;
+  transition: all 0.2s ease-in-out !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.donation-form-wrapper input:focus,
+.donation-form-wrapper textarea:focus,
+.donation-form-wrapper select:focus {
+  border-color: #059669 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1) !important;
+  transform: translateY(-1px) !important;
+}
+
+.donation-form-wrapper label {
+  /* Customize form labels */
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.donation-form-wrapper .mb-6 {
+  /* Customize field spacing */
+  margin-bottom: 1.5rem !important;
+}
+
+/* Form field container styling */
+.donation-form-wrapper .mb-6 {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Ensure form fields take full width */
+.donation-form-wrapper .mb-6 > * {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Specific styling for form field containers */
+.donation-form-wrapper [class*="mb-"] {
+  width: 100% !important;
+}
+
+/* Additional centering and responsive styles */
+.donation-form-block {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 0 1rem !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .donation-form-wrapper .container {
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+  
+  .donation-form-wrapper .p-4 {
+    padding: 1.5rem !important;
+  }
+}

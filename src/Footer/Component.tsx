@@ -7,7 +7,6 @@ import type { Footer } from '@/payload-types'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
-import { Chatbot } from '@/components/Chatbot/Chatbot'
 
 export async function Footer() {
   // Get footer data from Payload CMS global settings
@@ -147,8 +146,6 @@ export async function Footer() {
           <ThemeSelector />
         </div>
       </div>
-      {/* Chatbot */}
-      <Chatbot />
     </footer>
   )
 }

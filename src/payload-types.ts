@@ -236,6 +236,66 @@ export interface Page {
         blockName?: string | null;
         blockType: 'sponsorsPartners';
       }
+    | DonationFormBlock
+    | {
+        image: string | Media;
+        title: string;
+        grade: string;
+        duration: string;
+        classSize: string;
+        /**
+         * Use same category as dropdown for filtering courses
+         */
+        category: string;
+        buttonLabel: string;
+        /**
+         * Paste a URL or a site-relative slug like /courses/scratch
+         */
+        buttonHref?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courseCard';
+      }
+    | {
+        title?: string | null;
+        /**
+         * Add dropdown options like “Math”, “Programming”, etc.
+         */
+        filters?:
+          | {
+              label: string;
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Add CourseCard blocks. Set “category” for filters.
+         */
+        cards?:
+          | {
+              image: string | Media;
+              title: string;
+              grade: string;
+              duration: string;
+              classSize: string;
+              /**
+               * Use same category as dropdown for filtering courses
+               */
+              category: string;
+              buttonLabel: string;
+              /**
+               * Paste a URL or a site-relative slug like /courses/scratch
+               */
+              buttonHref?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'courseCard';
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courses';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -798,6 +858,18 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock".
+ */
+export interface DonationFormBlock {
+  heading?: string | null;
+  description?: string | null;
+  form?: FormBlock[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'donate';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1129,6 +1201,53 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        donate?: T | DonationFormBlockSelect<T>;
+        courseCard?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              grade?: T;
+              duration?: T;
+              classSize?: T;
+              category?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              id?: T;
+              blockName?: T;
+            };
+        courses?:
+          | T
+          | {
+              title?: T;
+              filters?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    courseCard?:
+                      | T
+                      | {
+                          image?: T;
+                          title?: T;
+                          grade?: T;
+                          duration?: T;
+                          classSize?: T;
+                          category?: T;
+                          buttonLabel?: T;
+                          buttonHref?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1240,6 +1359,21 @@ export interface GallerySelect<T extends boolean = true> {
         media?: T;
         caption?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock_select".
+ */
+export interface DonationFormBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  form?:
+    | T
+    | {
+        formBlock?: T | FormBlockSelect<T>;
       };
   id?: T;
   blockName?: T;
