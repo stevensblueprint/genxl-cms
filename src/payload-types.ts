@@ -296,6 +296,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'courses';
       }
+    | BigVideoImageBlock
   )[];
   meta?: {
     title?: string | null;
@@ -870,6 +871,19 @@ export interface DonationFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BigVideoImageBlock".
+ */
+export interface BigVideoImageBlock {
+  /**
+   * Upload an image or video that will span the entire page width
+   */
+  media: string | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'bigVideoImage';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1248,6 +1262,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        bigVideoImage?: T | BigVideoImageBlockSelect<T>;
       };
   meta?:
     | T
@@ -1375,6 +1390,15 @@ export interface DonationFormBlockSelect<T extends boolean = true> {
     | {
         formBlock?: T | FormBlockSelect<T>;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BigVideoImageBlock_select".
+ */
+export interface BigVideoImageBlockSelect<T extends boolean = true> {
+  media?: T;
   id?: T;
   blockName?: T;
 }
