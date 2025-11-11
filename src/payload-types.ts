@@ -103,14 +103,10 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    carousel: Carousel;
-    accordion: Accordion;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    carousel: CarouselSelect<false> | CarouselSelect<true>;
-    accordion: AccordionSelect<false> | AccordionSelect<true>;
   };
   locale: null;
   user: User & {
@@ -296,6 +292,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'courses';
       }
+    | CarouselBlock
   )[];
   meta?: {
     title?: string | null;
@@ -870,6 +867,24 @@ export interface DonationFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  title?: string | null;
+  description?: string | null;
+  reviews?:
+    | {
+        description?: string | null;
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1248,6 +1263,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        carousel?: T | CarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1374,6 +1390,23 @@ export interface DonationFormBlockSelect<T extends boolean = true> {
     | T
     | {
         formBlock?: T | FormBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  reviews?:
+    | T
+    | {
+        description?: T;
+        name?: T;
+        id?: T;
       };
   id?: T;
   blockName?: T;
@@ -1860,40 +1893,6 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "carousel".
- */
-export interface Carousel {
-  id: string;
-  title?: string | null;
-  reviews?:
-    | {
-        description?: string | null;
-        name?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accordion".
- */
-export interface Accordion {
-  id: string;
-  title?: string | null;
-  questions?:
-    | {
-        question?: string | null;
-        answer?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1935,40 +1934,6 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "carousel_select".
- */
-export interface CarouselSelect<T extends boolean = true> {
-  title?: T;
-  reviews?:
-    | T
-    | {
-        description?: T;
-        name?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accordion_select".
- */
-export interface AccordionSelect<T extends boolean = true> {
-  title?: T;
-  questions?:
-    | T
-    | {
-        question?: T;
-        answer?: T;
         id?: T;
       };
   updatedAt?: T;
