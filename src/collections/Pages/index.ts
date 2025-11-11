@@ -17,6 +17,7 @@ import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
 import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
+import { Carousel } from '../../blocks/Carousel/config'
 
 import {
   MetaDescriptionField,
@@ -91,6 +92,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 DonationForm,
                 CourseCard,
                 CoursesBlock,
+                Carousel,
               ],
 
               required: true,
