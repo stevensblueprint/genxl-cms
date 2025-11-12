@@ -91,7 +91,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                   {/* Dropdown menu on hover */}
                   {hoveredItem === i && (
                     <div className="absolute top-full left-0 pt-2 -mt-2 z-50">
-                      <div className="mt-2 min-w-[160px] rounded-md border border-gray-700 bg-gray-800 shadow-lg">
+                      <div className="mt-2 min-w-[160px] rounded-md border border-gray-700 bg-black shadow-lg">
                         {item.dropdownItems!.map((dropdownItem: any, j: number) => {
                           const dropdownActive = isUrlActive(dropdownItem.url)
 
