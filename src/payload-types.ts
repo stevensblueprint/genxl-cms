@@ -103,14 +103,10 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    carousel: Carousel;
-    accordion: Accordion;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    carousel: CarouselSelect<false> | CarouselSelect<true>;
-    accordion: AccordionSelect<false> | AccordionSelect<true>;
   };
   locale: null;
   user: User & {
@@ -236,6 +232,67 @@ export interface Page {
         blockName?: string | null;
         blockType: 'sponsorsPartners';
       }
+    | DonationFormBlock
+    | {
+        image: string | Media;
+        title: string;
+        grade: string;
+        duration: string;
+        classSize: string;
+        /**
+         * Use same category as dropdown for filtering courses
+         */
+        category: string;
+        buttonLabel: string;
+        /**
+         * Paste a URL or a site-relative slug like /courses/scratch
+         */
+        buttonHref?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courseCard';
+      }
+    | {
+        title?: string | null;
+        /**
+         * Add dropdown options like “Math”, “Programming”, etc.
+         */
+        filters?:
+          | {
+              label: string;
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+        /**
+         * Add CourseCard blocks. Set “category” for filters.
+         */
+        cards?:
+          | {
+              image: string | Media;
+              title: string;
+              grade: string;
+              duration: string;
+              classSize: string;
+              /**
+               * Use same category as dropdown for filtering courses
+               */
+              category: string;
+              buttonLabel: string;
+              /**
+               * Paste a URL or a site-relative slug like /courses/scratch
+               */
+              buttonHref?: string | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'courseCard';
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'courses';
+      }
+    | CarouselBlock
     | NumbersBlock
   )[];
   meta?: {
@@ -799,6 +856,36 @@ export interface Gallery {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock".
+ */
+export interface DonationFormBlock {
+  heading?: string | null;
+  description?: string | null;
+  form?: FormBlock[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'donate';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock".
+ */
+export interface CarouselBlock {
+  title?: string | null;
+  description?: string | null;
+  reviews?:
+    | {
+        description?: string | null;
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "NumbersBlock".
  */
 export interface NumbersBlock {
@@ -808,7 +895,7 @@ export interface NumbersBlock {
   instructors: number;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'numbers-block';
+  blockType: 'numbersBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1143,7 +1230,55 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
-        'numbers-block'?: T | NumbersBlockSelect<T>;
+        donate?: T | DonationFormBlockSelect<T>;
+        courseCard?:
+          | T
+          | {
+              image?: T;
+              title?: T;
+              grade?: T;
+              duration?: T;
+              classSize?: T;
+              category?: T;
+              buttonLabel?: T;
+              buttonHref?: T;
+              id?: T;
+              blockName?: T;
+            };
+        courses?:
+          | T
+          | {
+              title?: T;
+              filters?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    id?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    courseCard?:
+                      | T
+                      | {
+                          image?: T;
+                          title?: T;
+                          grade?: T;
+                          duration?: T;
+                          classSize?: T;
+                          category?: T;
+                          buttonLabel?: T;
+                          buttonHref?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        carousel?: T | CarouselBlockSelect<T>;
+        numbersBlock?: T | NumbersBlockSelect<T>;
       };
   meta?:
     | T
@@ -1254,6 +1389,38 @@ export interface GallerySelect<T extends boolean = true> {
     | {
         media?: T;
         caption?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "DonationFormBlock_select".
+ */
+export interface DonationFormBlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  form?:
+    | T
+    | {
+        formBlock?: T | FormBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  reviews?:
+    | T
+    | {
+        description?: T;
+        name?: T;
         id?: T;
       };
   id?: T;
@@ -1753,40 +1920,6 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "carousel".
- */
-export interface Carousel {
-  id: string;
-  title?: string | null;
-  reviews?:
-    | {
-        description?: string | null;
-        name?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accordion".
- */
-export interface Accordion {
-  id: string;
-  title?: string | null;
-  questions?:
-    | {
-        question?: string | null;
-        answer?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1828,40 +1961,6 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "carousel_select".
- */
-export interface CarouselSelect<T extends boolean = true> {
-  title?: T;
-  reviews?:
-    | T
-    | {
-        description?: T;
-        name?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "accordion_select".
- */
-export interface AccordionSelect<T extends boolean = true> {
-  title?: T;
-  questions?:
-    | T
-    | {
-        question?: T;
-        answer?: T;
         id?: T;
       };
   updatedAt?: T;

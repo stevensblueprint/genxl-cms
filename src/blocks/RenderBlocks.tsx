@@ -5,23 +5,29 @@ import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
+import { DonationForm } from '@/blocks/DonationForm/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { Gallery } from '@/blocks/Gallery/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
+import { CoursesBlock } from '@/blocks/Courses/Component'
+import { CarouselBlock } from '@/blocks/Carousel/Component'
 import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
+  donate: DonationForm,
   formBlock: FormBlock,
   gallery: Gallery,
   mediaBlock: MediaBlock,
   sponsorsPartners: SponsorsPartnersBlock,
   courseCard: CourseCardBlock,
-  NumbersBlock: NumbersBlock,
+  courses: CoursesBlock,
+  carousel: CarouselBlock,
+  numbersBlock: NumbersBlock,
 }
 
 export const RenderBlocks: React.FC<{

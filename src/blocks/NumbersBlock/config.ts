@@ -1,7 +1,7 @@
 import { Block } from 'payload/types';
 
 export const NumbersBlock: Block = {
-  slug: 'numbers-block',
+  slug: 'numbersBlock',
   interfaceName: 'NumbersBlock',
   fields: [
     {
@@ -34,4 +34,3 @@ export const NumbersBlock: Block = {
     },
   ],
 };
-
