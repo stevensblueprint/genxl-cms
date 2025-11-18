@@ -293,6 +293,7 @@ export interface Page {
         blockType: 'courses';
       }
     | CarouselBlock
+    | NumbersBlock
   )[];
   meta?: {
     title?: string | null;
@@ -885,6 +886,19 @@ export interface CarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlock".
+ */
+export interface NumbersBlock {
+  uniqueCourses: number;
+  applicants: number;
+  countriesStates: number;
+  instructors: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'numbersBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1264,6 +1278,7 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         carousel?: T | CarouselBlockSelect<T>;
+        numbersBlock?: T | NumbersBlockSelect<T>;
       };
   meta?:
     | T
@@ -1408,6 +1423,18 @@ export interface CarouselBlockSelect<T extends boolean = true> {
         name?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlock_select".
+ */
+export interface NumbersBlockSelect<T extends boolean = true> {
+  uniqueCourses?: T;
+  applicants?: T;
+  countriesStates?: T;
+  instructors?: T;
   id?: T;
   blockName?: T;
 }

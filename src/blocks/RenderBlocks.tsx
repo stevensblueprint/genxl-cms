@@ -13,6 +13,7 @@ import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +27,7 @@ const blockComponents = {
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
   carousel: CarouselBlock,
+  numbersBlock: NumbersBlock,
 }
 
 export const RenderBlocks: React.FC<{
