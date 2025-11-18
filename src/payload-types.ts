@@ -293,6 +293,7 @@ export interface Page {
         blockType: 'courses';
       }
     | CarouselBlock
+    | MeatballMenuBlock
   )[];
   meta?: {
     title?: string | null;
@@ -885,6 +886,29 @@ export interface CarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenuBlock".
+ */
+export interface MeatballMenuBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  /**
+   * Enter a hex color code (e.g., #F5F5F5)
+   */
+  backgroundColor?: string | null;
+  items?:
+    | {
+        icon?: (string | null) | Media;
+        caption?: string | null;
+        subcaption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'meatballMenu';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1264,6 +1288,7 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         carousel?: T | CarouselBlockSelect<T>;
+        meatballMenu?: T | MeatballMenuBlockSelect<T>;
       };
   meta?:
     | T
@@ -1406,6 +1431,25 @@ export interface CarouselBlockSelect<T extends boolean = true> {
     | {
         description?: T;
         name?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenuBlock_select".
+ */
+export interface MeatballMenuBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  backgroundColor?: T;
+  items?:
+    | T
+    | {
+        icon?: T;
+        caption?: T;
+        subcaption?: T;
         id?: T;
       };
   id?: T;
