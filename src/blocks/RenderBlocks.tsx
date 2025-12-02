@@ -13,6 +13,8 @@ import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
+import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
 import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 
 const blockComponents = {
@@ -27,6 +29,8 @@ const blockComponents = {
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
   carousel: CarouselBlock,
+  numbersBlock: NumbersBlock,
+  numbersBlockMobile: NumbersBlockMobile,
   meatballMenu: MeatballMenuBlock,
 }
 

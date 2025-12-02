@@ -293,6 +293,8 @@ export interface Page {
         blockType: 'courses';
       }
     | CarouselBlock
+    | NumbersBlock
+    | NumbersBlockMobile
     | MeatballMenuBlock
   )[];
   meta?: {
@@ -886,6 +888,29 @@ export interface CarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlock".
+ */
+export interface NumbersBlock {
+  uniqueCourses: number;
+  applicants: number;
+  countriesStates: number;
+  instructors: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'numbersBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlockMobile".
+ */
+export interface NumbersBlockMobile {
+  uniqueCourses: number;
+  applicants: number;
+  countriesStates: number;
+  instructors: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'numbersBlockMobile';
  * via the `definition` "MeatballMenuBlock".
  */
 export interface MeatballMenuBlock {
@@ -1288,6 +1313,8 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         carousel?: T | CarouselBlockSelect<T>;
+        numbersBlock?: T | NumbersBlockSelect<T>;
+        numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
       };
   meta?:
@@ -1438,6 +1465,25 @@ export interface CarouselBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlock_select".
+ */
+export interface NumbersBlockSelect<T extends boolean = true> {
+  uniqueCourses?: T;
+  applicants?: T;
+  countriesStates?: T;
+  instructors?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlockMobile_select".
+ */
+export interface NumbersBlockMobileSelect<T extends boolean = true> {
+  uniqueCourses?: T;
+  applicants?: T;
+  countriesStates?: T;
+  instructors?: T;
  * via the `definition` "MeatballMenuBlock_select".
  */
 export interface MeatballMenuBlockSelect<T extends boolean = true> {
