@@ -18,6 +18,7 @@ import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
 import { Carousel } from '../../blocks/Carousel/config'
+import { Map } from '../../blocks/Map/config'
 
 import {
   MetaDescriptionField,
@@ -93,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CourseCard,
                 CoursesBlock,
                 Carousel,
+                Map,
               ],
 
               required: true,

@@ -13,6 +13,7 @@ import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { Map } from '@/blocks/Map/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +27,7 @@ const blockComponents = {
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
   carousel: CarouselBlock,
+  map: Map,
 }
 
 export const RenderBlocks: React.FC<{

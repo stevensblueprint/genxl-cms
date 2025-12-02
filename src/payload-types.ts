@@ -293,6 +293,7 @@ export interface Page {
         blockType: 'courses';
       }
     | CarouselBlock
+    | Map
   )[];
   meta?: {
     title?: string | null;
@@ -885,6 +886,53 @@ export interface CarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Map".
+ */
+export interface Map {
+  title?: string | null;
+  /**
+   * Optional description to display above the map
+   */
+  description?: string | null;
+  locations: {
+    /**
+     * e.g., "Kathmandu, Nepal"
+     */
+    name: string;
+    /**
+     * Location latitude (e.g., 27.7172)
+     */
+    latitude: number;
+    /**
+     * Location longitude (e.g., 85.3240)
+     */
+    longitude: number;
+    /**
+     * Optional description shown in the popup
+     */
+    description?: string | null;
+    id?: string | null;
+  }[];
+  /**
+   * Zoom level when map first loads (1-18, where 1 is world view)
+   */
+  defaultZoom?: number | null;
+  defaultCenter?: {
+    /**
+     * Default center latitude for the map
+     */
+    latitude?: number | null;
+    /**
+     * Default center longitude for the map
+     */
+    longitude?: number | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'map';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1264,6 +1312,7 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         carousel?: T | CarouselBlockSelect<T>;
+        map?: T | MapSelect<T>;
       };
   meta?:
     | T
@@ -1407,6 +1456,32 @@ export interface CarouselBlockSelect<T extends boolean = true> {
         description?: T;
         name?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Map_select".
+ */
+export interface MapSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  locations?:
+    | T
+    | {
+        name?: T;
+        latitude?: T;
+        longitude?: T;
+        description?: T;
+        id?: T;
+      };
+  defaultZoom?: T;
+  defaultCenter?:
+    | T
+    | {
+        latitude?: T;
+        longitude?: T;
       };
   id?: T;
   blockName?: T;
