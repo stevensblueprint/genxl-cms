@@ -20,6 +20,7 @@ import { CoursesBlock } from '../../blocks/Courses/Config'
 import { Carousel } from '../../blocks/Carousel/config'
 import { NumbersBlock } from '../../blocks/NumbersBlock/config'
 import { NumbersBlockMobile } from '../../blocks/NumbersBlockMobile/config'
+import { MeatballMenu } from '../../blocks/MeatballMenu/config'
 
 import {
   MetaDescriptionField,
@@ -97,6 +98,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Carousel,
                 NumbersBlock,
                 NumbersBlockMobile,
+                MeatballMenu,
               ],
 
               required: true,

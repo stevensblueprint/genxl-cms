@@ -295,6 +295,7 @@ export interface Page {
     | CarouselBlock
     | NumbersBlock
     | NumbersBlockMobile
+    | MeatballMenuBlock
   )[];
   meta?: {
     title?: string | null;
@@ -910,6 +911,26 @@ export interface NumbersBlockMobile {
   id?: string | null;
   blockName?: string | null;
   blockType: 'numbersBlockMobile';
+ * via the `definition` "MeatballMenuBlock".
+ */
+export interface MeatballMenuBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  /**
+   * Enter a hex color code (e.g., #F5F5F5)
+   */
+  backgroundColor?: string | null;
+  items?:
+    | {
+        icon?: (string | null) | Media;
+        caption?: string | null;
+        subcaption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'meatballMenu';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1294,6 +1315,7 @@ export interface PagesSelect<T extends boolean = true> {
         carousel?: T | CarouselBlockSelect<T>;
         numbersBlock?: T | NumbersBlockSelect<T>;
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
+        meatballMenu?: T | MeatballMenuBlockSelect<T>;
       };
   meta?:
     | T
@@ -1462,6 +1484,20 @@ export interface NumbersBlockMobileSelect<T extends boolean = true> {
   applicants?: T;
   countriesStates?: T;
   instructors?: T;
+ * via the `definition` "MeatballMenuBlock_select".
+ */
+export interface MeatballMenuBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  backgroundColor?: T;
+  items?:
+    | T
+    | {
+        icon?: T;
+        caption?: T;
+        subcaption?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
