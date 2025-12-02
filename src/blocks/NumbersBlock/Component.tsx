@@ -19,7 +19,7 @@ export const NumbersBlock: React.FC<Props> = ({
   disableInnerContainer,
 }) => {
   return (
-    <div className={cn('bg-yellow-400 py-16 px-8', className)}>
+    <div className={cn('py-16 px-8', className)} style={{ backgroundColor: '#F8DC48' }}>
       <div className={cn('max-w-6xl mx-auto', { container: enableGutter })}>
         {/* Header */}
         <div className={cn('text-center mb-16', { container: !disableInnerContainer })}>
