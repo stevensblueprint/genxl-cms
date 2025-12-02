@@ -294,6 +294,7 @@ export interface Page {
       }
     | CarouselBlock
     | NumbersBlock
+    | NumbersBlockMobile
   )[];
   meta?: {
     title?: string | null;
@@ -899,6 +900,19 @@ export interface NumbersBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlockMobile".
+ */
+export interface NumbersBlockMobile {
+  uniqueCourses: number;
+  applicants: number;
+  countriesStates: number;
+  instructors: number;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'numbersBlockMobile';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1279,6 +1293,7 @@ export interface PagesSelect<T extends boolean = true> {
             };
         carousel?: T | CarouselBlockSelect<T>;
         numbersBlock?: T | NumbersBlockSelect<T>;
+        numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
       };
   meta?:
     | T
@@ -1431,6 +1446,18 @@ export interface CarouselBlockSelect<T extends boolean = true> {
  * via the `definition` "NumbersBlock_select".
  */
 export interface NumbersBlockSelect<T extends boolean = true> {
+  uniqueCourses?: T;
+  applicants?: T;
+  countriesStates?: T;
+  instructors?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NumbersBlockMobile_select".
+ */
+export interface NumbersBlockMobileSelect<T extends boolean = true> {
   uniqueCourses?: T;
   applicants?: T;
   countriesStates?: T;
