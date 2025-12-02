@@ -296,6 +296,19 @@ export interface Page {
         blockName?: string | null;
         blockType: 'courses';
       }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        description?: string | null;
+        button?: {
+          label?: string | null;
+          url?: string | null;
+        };
+        image?: (string | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'about';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1245,6 +1258,22 @@ export interface PagesSelect<T extends boolean = true> {
                           blockName?: T;
                         };
                   };
+              id?: T;
+              blockName?: T;
+            };
+        about?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              description?: T;
+              button?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                  };
+              image?: T;
               id?: T;
               blockName?: T;
             };
