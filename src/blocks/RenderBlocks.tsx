@@ -14,6 +14,9 @@ import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
 import { Map } from '@/blocks/Map/Component'
+import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
+import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
+import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -28,6 +31,9 @@ const blockComponents = {
   courses: CoursesBlock,
   carousel: CarouselBlock,
   map: Map,
+  numbersBlock: NumbersBlock,
+  numbersBlockMobile: NumbersBlockMobile,
+  meatballMenu: MeatballMenuBlock,
 }
 
 export const RenderBlocks: React.FC<{
