@@ -933,6 +933,9 @@ export interface Map {
   id?: string | null;
   blockName?: string | null;
   blockType: 'map';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "NumbersBlock".
  */
 export interface NumbersBlock {
