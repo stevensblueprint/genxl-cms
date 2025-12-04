@@ -18,7 +18,6 @@ import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
 import { Carousel } from '../../blocks/Carousel/config'
-import { Map } from '../../blocks/Map/config'
 import { NumbersBlock } from '../../blocks/NumbersBlock/config'
 import { NumbersBlockMobile } from '../../blocks/NumbersBlockMobile/config'
 import { MeatballMenu } from '../../blocks/MeatballMenu/config'
@@ -97,7 +96,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 CourseCard,
                 CoursesBlock,
                 Carousel,
-                Map,
                 NumbersBlock,
                 NumbersBlockMobile,
                 MeatballMenu,
