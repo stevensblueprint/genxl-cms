@@ -926,7 +926,6 @@ export interface NumbersBlockMobile {
   blockName?: string | null;
   blockType: 'numbersBlockMobile';
 }
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MeatballMenuBlock".
@@ -1569,8 +1568,6 @@ export interface NumbersBlockMobileSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
-
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MeatballMenuBlock_select".
