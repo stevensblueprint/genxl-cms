@@ -12,6 +12,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
+import { AboutBlock } from '@/blocks/About/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
 import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
@@ -29,6 +30,7 @@ const blockComponents = {
   sponsorsPartners: SponsorsPartnersBlock,
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
+  about: AboutBlock,
   carousel: CarouselBlock,
   numbersBlock: NumbersBlock,
   numbersBlockMobile: NumbersBlockMobile,

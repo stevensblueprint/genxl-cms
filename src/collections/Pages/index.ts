@@ -17,6 +17,7 @@ import { SponsorsPartners } from '../../blocks/SponsorsPartners/config'
 import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
+import { About } from '../../blocks/About/config'
 import { Carousel } from '../../blocks/Carousel/config'
 import { NumbersBlock } from '../../blocks/NumbersBlock/config'
 import { NumbersBlockMobile } from '../../blocks/NumbersBlockMobile/config'
@@ -96,6 +97,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 DonationForm,
                 CourseCard,
                 CoursesBlock,
+                About,
                 Carousel,
                 NumbersBlock,
                 NumbersBlockMobile,
