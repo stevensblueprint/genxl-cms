@@ -309,6 +309,7 @@ export interface Page {
     | NumbersBlock
     | NumbersBlockMobile
     | MeatballMenuBlock
+    | Map
   )[];
   meta?: {
     title?: string | null;
@@ -926,6 +927,10 @@ export interface NumbersBlockMobile {
   blockType: 'numbersBlockMobile';
 }
 
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenuBlock".
+ */
 export interface MeatballMenuBlock {
   title?: string | null;
   subtitle?: string | null;
@@ -944,6 +949,53 @@ export interface MeatballMenuBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'meatballMenu';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Map".
+ */
+export interface Map {
+  title?: string | null;
+  /**
+   * Optional description to display above the map
+   */
+  description?: string | null;
+  locations: {
+    /**
+     * e.g., "Kathmandu, Nepal"
+     */
+    name: string;
+    /**
+     * Location latitude (e.g., 27.7172)
+     */
+    latitude: number;
+    /**
+     * Location longitude (e.g., 85.3240)
+     */
+    longitude: number;
+    /**
+     * Optional description shown in the popup
+     */
+    description?: string | null;
+    id?: string | null;
+  }[];
+  /**
+   * Zoom level when map first loads (1-18, where 1 is world view)
+   */
+  defaultZoom?: number | null;
+  defaultCenter?: {
+    /**
+     * Default center latitude for the map
+     */
+    latitude?: number | null;
+    /**
+     * Default center longitude for the map
+     */
+    longitude?: number | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'map';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1345,6 +1397,7 @@ export interface PagesSelect<T extends boolean = true> {
         numbersBlock?: T | NumbersBlockSelect<T>;
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
+        map?: T | MapSelect<T>;
       };
   meta?:
     | T
@@ -1518,6 +1571,10 @@ export interface NumbersBlockMobileSelect<T extends boolean = true> {
 }
 
 
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MeatballMenuBlock_select".
+ */
 export interface MeatballMenuBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
@@ -1529,6 +1586,32 @@ export interface MeatballMenuBlockSelect<T extends boolean = true> {
         caption?: T;
         subcaption?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Map_select".
+ */
+export interface MapSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  locations?:
+    | T
+    | {
+        name?: T;
+        latitude?: T;
+        longitude?: T;
+        description?: T;
+        id?: T;
+      };
+  defaultZoom?: T;
+  defaultCenter?:
+    | T
+    | {
+        latitude?: T;
+        longitude?: T;
       };
   id?: T;
   blockName?: T;
