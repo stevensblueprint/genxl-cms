@@ -16,6 +16,7 @@ import { CarouselBlock } from '@/blocks/Carousel/Component'
 import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
 import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
+import { Map } from '@/blocks/Map/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -32,6 +33,7 @@ const blockComponents = {
   numbersBlock: NumbersBlock,
   numbersBlockMobile: NumbersBlockMobile,
   meatballMenu: MeatballMenuBlock,
+  map: Map,
 }
 
 export const RenderBlocks: React.FC<{
