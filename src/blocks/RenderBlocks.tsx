@@ -13,6 +13,10 @@ import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { AboutBlock } from '@/blocks/About/Component'
+import { CarouselBlock } from '@/blocks/Carousel/Component'
+import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
+import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
+import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +30,10 @@ const blockComponents = {
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
   about: AboutBlock,
+  carousel: CarouselBlock,
+  numbersBlock: NumbersBlock,
+  numbersBlockMobile: NumbersBlockMobile,
+  meatballMenu: MeatballMenuBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -1,16 +1,19 @@
-import type { GlobalConfig } from 'payload'
+import type { Block } from 'payload'
 
-// import { link } from '@/fields/link'
-import { revalidateCarousel } from './hooks/revalidateCarousel'
-
-export const Carousel: GlobalConfig = {
+export const Carousel: Block = {
   slug: 'carousel',
-  access: {
-    read: () => true,
+  interfaceName: 'CarouselBlock',
+  labels: {
+    plural: 'Carousels',
+    singular: 'Carousel',
   },
   fields: [
     {
       name: 'title',
+      type: 'text',
+    },
+    {
+      name: 'description',
       type: 'text',
     },
     {
@@ -28,7 +31,4 @@ export const Carousel: GlobalConfig = {
       ],
     },
   ],
-  hooks: {
-    afterChange: [revalidateCarousel],
-  },
 }

@@ -18,6 +18,10 @@ import { DonationForm } from '../../blocks/DonationForm/config'
 import { CourseCard } from '../../blocks/CourseCard/config'
 import { CoursesBlock } from '../../blocks/Courses/Config'
 import { About } from '../../blocks/About/config'
+import { Carousel } from '../../blocks/Carousel/config'
+import { NumbersBlock } from '../../blocks/NumbersBlock/config'
+import { NumbersBlockMobile } from '../../blocks/NumbersBlockMobile/config'
+import { MeatballMenu } from '../../blocks/MeatballMenu/config'
 
 import {
   MetaDescriptionField,
@@ -93,6 +97,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 CourseCard,
                 CoursesBlock,
                 About,
+                Carousel,
+                NumbersBlock,
+                NumbersBlockMobile,
+                MeatballMenu,
               ],
 
               required: true,
