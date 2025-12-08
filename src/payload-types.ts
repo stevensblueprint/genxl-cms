@@ -924,8 +924,8 @@ export interface NumbersBlockMobile {
   id?: string | null;
   blockName?: string | null;
   blockType: 'numbersBlockMobile';
- * via the `definition` "MeatballMenuBlock".
- */
+}
+
 export interface MeatballMenuBlock {
   title?: string | null;
   subtitle?: string | null;
@@ -1513,8 +1513,11 @@ export interface NumbersBlockMobileSelect<T extends boolean = true> {
   applicants?: T;
   countriesStates?: T;
   instructors?: T;
- * via the `definition` "MeatballMenuBlock_select".
- */
+  id?: T;
+  blockName?: T;
+}
+
+
 export interface MeatballMenuBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
