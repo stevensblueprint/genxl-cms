@@ -39,18 +39,22 @@ export const PopUpModalBlock: React.FC<Props> = ({
     <>
       {/* Backdrop overlay */}
       <div
-        className="fixed inset-0 bg-black/50 z-40 transition-opacity"
-        onClick={onClose}
+        className="fixed inset-0 bg-black/80 z-40 transition-opacity"
         aria-hidden="true"
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        onClick={onClose}
+      >
         <div
+          onClick={(e) => e.stopPropagation()}
           className={cn(
-            'bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden relative',
+            'bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden relative opacity-100',
             className
           )}
+          style={{ backgroundColor: 'white' }}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-title"
@@ -68,58 +72,17 @@ export const PopUpModalBlock: React.FC<Props> = ({
             {/* Left side - Blue section with icon */}
             <div className="bg-blue-600 p-8 md:p-12 flex items-center justify-center md:w-2/5">
               <div className="text-white">
-                {/* Light bulb icon */}
-                <svg
-                  width="120"
-                  height="120"
-                  viewBox="0 0 120 120"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="mx-auto"
-                >
-                  {/* Rays */}
-                  <path
-                    d="M60 20 L60 10 M85 35 L92 28 M100 60 L110 60 M85 85 L92 92"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-                  {/* Bulb */}
-                  <circle
-                    cx="60"
-                    cy="55"
-                    r="20"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                  {/* Base */}
-                  <rect
-                    x="52"
-                    y="75"
-                    width="16"
-                    height="8"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                  <rect
-                    x="52"
-                    y="83"
-                    width="16"
-                    height="6"
-                    rx="2"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                </svg>
+                {/* Icon image */}
+                <img
+                  src="./lightbulb.png"
+                  alt="Newsletter icon"
+                  className="mx-auto w-[120px] h-[120px] object-contain"
+                />
               </div>
             </div>
 
             {/* Right side - Form section */}
-            <div className="p-8 md:p-12 md:w-3/5">
+            <div className="p-8 md:p-12 md:w-3/5 min-w-0">
               <h2
                 id="modal-title"
                 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
@@ -129,24 +92,29 @@ export const PopUpModalBlock: React.FC<Props> = ({
               <p className="text-gray-600 mb-8 text-sm md:text-base">{description}</p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={emailPlaceholder}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-400"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300"
-                >
-                  {buttonText}
-                </button>
-              </form>
+          <div className="flex w-full min-w-0">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder={emailPlaceholder}
+              required className="flex-1 min-w-0 px-4 py-3 border border-gray-300 border-r-0 rounded-l-lg
+               focus:outline-none focus:ring-2 focus:ring-blue-500
+               text-gray-900 placeholder-gray-400"
+          />
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-5 py-3 rounded-r-lg font-semibold
+               hover:bg-blue-700 transition-colors whitespace-nowrap flex-shrink-0"
+          >
+          {buttonText}
+          </button>
             </div>
+
+          </form>
+
+
+              </div>
           </div>
         </div>
       </div>
