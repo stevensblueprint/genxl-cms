@@ -5,8 +5,6 @@ import React from 'react'
 import type { Footer } from '@/payload-types'
 
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
-import { CMSLink } from '@/components/Link'
-import { Logo } from '@/components/Logo/Logo'
 
 export async function Footer() {
   // Get footer data from Payload CMS global settings
@@ -25,129 +23,142 @@ export async function Footer() {
         className="text-white relative" 
         style={{ 
           backgroundColor: 'rgb(20, 20, 22)', // Dark gray background
-          minHeight: '240px' // Minimum height to ensure proper spacing
         }}
       >
         {/* CONTENT WRAPPER: Centers content with max width and padding */}
         <div 
-          className="mx-auto px-8 py-8 grid gap-8 items-center" 
+          className="mx-auto px-8 py-7" 
           style={{ 
-            maxWidth: '1200px', // wider for spacing
-            gridTemplateColumns: 'auto 1fr auto', // left fixed, middle flexible, right fixed
-            minHeight: '200px'
+            maxWidth: '1200px',
           }}
         >
-          {/* MAIN LAYOUT: Three-column layout (logo, social media, badge) */}
+          {/* MAIN LAYOUT: Four-column layout (responsive: stacks on mobile) */}
+          <div 
+            className="grid gap-7 items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {/* COLUMN 1: Contact Us */}
+            <div className="flex flex-col">
+              <h3 className="text-base font-medium mb-2.5" style={{ color: '#FFD700' }}>Contact Us</h3>
+              <p className="text-white text-sm mb-2">genxl</p>
+              <p className="text-white text-sm mb-3">gnxl.org@gmail.com</p>
+              <Link 
+                href="/contact" 
+                className="text-white text-sm underline mb-3 hover:opacity-80 transition-opacity"
+              >
+                Send us a message
+              </Link>
+              {/* SOCIAL MEDIA ICONS */}
+              <ul className="flex flex-row flex-nowrap gap-3 mt-2" aria-label="Social Media Links" style={{ flexWrap: 'nowrap' }}>
+                <li style={{ flexShrink: 0 }}>
+                  <a href="https://www.facebook.com/profile.php?id=100069090228854" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <img 
+                      src="https://static.wixstatic.com/media/ce6ec7c11b174c0581e20f42bb865ce3.png"
+                      alt="Facebook"
+                      className="w-5 h-5 object-contain rounded-full hover:opacity-80 transition-opacity"
+                      style={{ display: 'block' }}
+                    />
+                  </a>
+                </li>
+                <li style={{ flexShrink: 0 }}>
+                  <a href="https://vm.tiktok.com/ZMR2cJaXG/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <img 
+                      src="https://static.wixstatic.com/media/11062b_94e1c6b464c9454a80fc03a2ce369a6d~mv2.png"
+                      alt="TikTok"
+                      className="w-5 h-5 object-contain rounded-full hover:opacity-80 transition-opacity"
+                      style={{ display: 'block' }}
+                    />
+                  </a>
+                </li>
+                <li style={{ flexShrink: 0 }}>
+                  <a href="https://www.youtube.com/channel/UCiQ2IDtqf9GMv_x_rxbzAww" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <img 
+                      src="https://static.wixstatic.com/media/71ac09a5a92848cc943bf2ca2a09a6d0.png"
+                      alt="YouTube"
+                      className="w-5 h-5 object-contain rounded-full hover:opacity-80 transition-opacity"
+                      style={{ display: 'block' }}
+                    />
+                  </a>
+                </li>
+                <li style={{ flexShrink: 0 }}>
+                  <a href="https://twitter.com/genxl1" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <img 
+                      src="https://static.wixstatic.com/media/444f49eac2e348f89128293b0c6432fd.png"
+                      alt="Twitter"
+                      className="w-5 h-5 object-contain rounded-full hover:opacity-80 transition-opacity"
+                      style={{ display: 'block' }}
+                    />
+                  </a>
+                </li>
+                <li style={{ flexShrink: 0 }}>
+                  <a href="https://www.linkedin.com/in/genxl-9b4173214/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img 
+                      src="https://static.wixstatic.com/media/8efda6398c724b5ea342287bfe3f5ed0.png"
+                      alt="LinkedIn"
+                      className="w-5 h-5 object-contain rounded-full hover:opacity-80 transition-opacity"
+                      style={{ display: 'block' }}
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-          {/* LEFT SECTION: GenXL Logo and Contact Information */}
-          <div className="flex items-center space-x-4" style={{ flex: '0 0 auto', marginTop: '20px' }}>
-            {/* LOGO: Circular blue logo with lightbulb icon */}
-            <div className="flex-shrink-0">
+            {/* COLUMN 2: Get To Know Us */}
+            <div className="flex flex-col">
+              <h3 className="text-base font-medium mb-2.5" style={{ color: '#FFD700' }}>Get To Know Us</h3>
+              <Link 
+                href="/about" 
+                className="text-white text-sm underline mb-3 hover:opacity-80 transition-opacity"
+              >
+                About Us
+              </Link>
+              <Link 
+                href="/courses" 
+                className="text-white text-sm underline mb-3 hover:opacity-80 transition-opacity"
+              >
+                Courses
+              </Link>
+              <Link 
+                href="/team" 
+                className="text-white text-sm underline hover:opacity-80 transition-opacity"
+              >
+                Team
+              </Link>
+            </div>
+
+            {/* COLUMN 3: Support Our Mission */}
+            <div className="flex flex-col">
+              <h3 className="text-base font-medium mb-2.5" style={{ color: '#FFD700' }}>Support Our Mission</h3>
+              <Link 
+                href="/donate" 
+                className="text-white text-sm underline mb-3 hover:opacity-80 transition-opacity"
+              >
+                Donate
+              </Link>
+              <Link 
+                href="/volunteer" 
+                className="text-white text-sm underline hover:opacity-80 transition-opacity"
+              >
+                Volunteer
+              </Link>
+            </div>
+
+            {/* COLUMN 4: GreatNonprofits Badge */}
+            <div className="flex justify-start lg:justify-end items-center">
               <img 
                 loading="lazy"
-                sizes="110px"
-                src="https://static.wixstatic.com/media/e188cb_4d38a439b0044bcf84991b7d85b0abba~mv2.png/v1/fill/w_110,h_92,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Screen_Shot_2021-08-23_at_6_19_36_PM-removebg-preview%20(1).png"
-                alt="GenXL Logo"
-                className="w-[110px] h-[92px] object-cover"
-                width="110"
-                height="92"
+                sizes="180px"
+                src="https://static.wixstatic.com/media/7b67f9_5e3f7adb8333445fbd18dcae0ccf1dc3~mv2.png/v1/fill/w_231,h_173,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2022-top-rated-awards-badge-hi-res.png"
+                alt="2022 Top Rated Nonprofit Badge"
+                className="w-[180px] h-auto object-contain"
+                width="180"
+                height="135"
               />
             </div>
-            {/* COMPANY INFO: GenXL name and email address */}
-            <div>
-               <h2 
-                 className="text-xl font-medium text-white mb-0"
-               >
-                 genxl
-               </h2>
-              <p className="text-sm text-white">gnxl.org@gmail.com</p>
-            </div>
           </div>
-
-           {/* MIDDLE SECTION: Social Media Links */}
-           <div className="justify-self-end flex flex-col items-center justify-center text-center" style={{ marginRight: '50px' }}>
-             {/* SOCIAL MEDIA HEADER */}
-             <h3 className="text-lg font-medium text-white mb-2">Follow Us On</h3>
-             {/* SOCIAL MEDIA ICONS: Smaller size (about half) */}
-             <ul className="flex justify-center space-x-2" aria-label="Social Bar">
-               <li>
-                 <a href="https://www.youtube.com/channel/UCiQ2IDtqf9GMv_x_rxbzAww" target="_blank" aria-label="YouTube">
-                   <img 
-                     src="https://static.wixstatic.com/media/71ac09a5a92848cc943bf2ca2a09a6d0.png"
-                     alt="YouTube"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-               <li>
-                 <a href="https://vm.tiktok.com/ZMR2cJaXG/" target="_blank" aria-label="TikTok">
-                   <img 
-                     src="https://static.wixstatic.com/media/11062b_94e1c6b464c9454a80fc03a2ce369a6d~mv2.png"
-                     alt="TikTok"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-               <li>
-                 <a href="https://www.instagram.com/genxl_/?hl=en" target="_blank" aria-label="Instagram">
-                   <img 
-                     src="https://static.wixstatic.com/media/fdcfaba150fc427da298a00cb09d91c1.png"
-                     alt="Instagram"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-               <li>
-                 <a href="https://www.linkedin.com/in/genxl-9b4173214/" target="_blank" aria-label="LinkedIn">
-                   <img 
-                     src="https://static.wixstatic.com/media/8efda6398c724b5ea342287bfe3f5ed0.png"
-                     alt="LinkedIn"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-               <li>
-                 <a href="https://www.facebook.com/profile.php?id=100069090228854" target="_blank" aria-label="Facebook">
-                   <img 
-                     src="https://static.wixstatic.com/media/ce6ec7c11b174c0581e20f42bb865ce3.png"
-                     alt="Facebook"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-               <li>
-                 <a href="https://twitter.com/genxl1" target="_blank" aria-label="Twitter">
-                   <img 
-                     src="https://static.wixstatic.com/media/444f49eac2e348f89128293b0c6432fd.png"
-                     alt="Twitter"
-                     className="w-5 h-5 lg:w-6 lg:h-6 object-contain rounded-full hover:opacity-80 transition-opacity"
-                   />
-                 </a>
-               </li>
-             </ul>
-           </div>
-
-          {/* Right Section - GreatNonprofits Badge */}
-          <div className="justify-self-end" style={{ marginRight: '50px' }}>
-            <img 
-              loading="lazy"
-              sizes="231px"
-              src="https://static.wixstatic.com/media/7b67f9_5e3f7adb8333445fbd18dcae0ccf1dc3~mv2.png/v1/fill/w_231,h_173,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2022-top-rated-awards-badge-hi-res.png"
-              alt="2022-top-rated-awards-badge-hi-res.png"
-              className="w-[231px] h-[173px] object-cover"
-              width="231"
-              height="173"
-            />
-          </div>
-        </div>
-
-        {/* Message Us Button - Bottom Right */}
-        <div className="absolute bottom-4 right-4">
-          {/* ... keep your button code exactly as you wrote it ... */}
         </div>
 
         {/* Theme Selector */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-3 flex justify-center pb-3">
           <ThemeSelector />
         </div>
       </div>
