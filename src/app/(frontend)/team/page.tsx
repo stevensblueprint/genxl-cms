@@ -31,7 +31,7 @@ export default function TeamPage() {
       { name: 'Garv Sehgal', title: 'Organizer', image: '/GarvSehgalOrganizerPunjab,India.avif' },
       { name: 'Khushal Davesar', title: 'Member', image: '/KhushalDavesarMember,Punjab,India.avif' }
     ],
-    'Agadir, Morroco': [
+    'Agadir, Morocco': [
       { name: 'Hiba Bidar', title: 'President and Founder', image: '/HibaBidarPresidentFounderAgadirMorroco.avif' }
     ],
     'Bacoor, Philippines': [
@@ -64,7 +64,7 @@ export default function TeamPage() {
     'Lagos, Nigeria': [
       { name: 'Halima Bello', title: 'President and Founder', image: '/HalimaBelloPresidentandFounderLagosNigeria.avif' }
     ],
-    'Mbabane City, Swazilan': [
+    'Mbabane City, Swaziland': [
       { name: 'Saziwengaye Simelene', title: 'President and Founder', image: '/SaziwengayeSimelenePresidentandFounder-MbabaneCity,Swaziland.avif' },
       { name: 'Sinenhlanhla Hlophe', title: 'Vice President and Instructor', image: '/SinenhlanhlaHlopheVicePresidentandInstructorMbabaneCitySwaziland.avif' }
     ],
@@ -173,8 +173,8 @@ export default function TeamPage() {
   ]
 
   const internationalChapters = [
-    ['Agadir, Morroco', 'Bacoor, Philippines', 'Bangkok, Thailand', 'Cairo, Egypt', 'Chonburi, Thailand', 'Coimbatore, India'],
-    ['Coimbatore, India', 'Karnataka, India', 'Kathmandu, Nepal', 'Kowloon, Hong Kong', 'Lagos, Nigeria', 'Mbabane City, Swazilan'],
+    ['Agadir, Morocco', 'Bacoor, Philippines', 'Bangkok, Thailand', 'Cairo, Egypt', 'Chonburi, Thailand', 'Coimbatore, India'],
+    ['Coimbatore, India', 'Karnataka, India', 'Kathmandu, Nepal', 'Kowloon, Hong Kong', 'Lagos, Nigeria', 'Mbabane City, Swaziland'],
     ['Munich, Germany', 'Ontario, Canada', 'Punjab, India', 'Singapore', 'Uttar Pradesh, India', 'Volta, Ghana'],
   ]
 
