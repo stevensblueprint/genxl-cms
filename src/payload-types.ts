@@ -310,6 +310,26 @@ export interface Page {
     | NumbersBlockMobile
     | MeatballMenuBlock
     | Map
+    | {
+        heroTitle?: string | null;
+        heroImage?: (string | null) | Media;
+        rolesHeading?: string | null;
+        roles?:
+          | {
+              title: string;
+              description: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        contact?: {
+          contactHeading?: string | null;
+          contactSubheading?: string | null;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'volunteer';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1397,6 +1417,29 @@ export interface PagesSelect<T extends boolean = true> {
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
         map?: T | MapSelect<T>;
+        volunteer?:
+          | T
+          | {
+              heroTitle?: T;
+              heroImage?: T;
+              rolesHeading?: T;
+              roles?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              contact?:
+                | T
+                | {
+                    contactHeading?: T;
+                    contactSubheading?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
