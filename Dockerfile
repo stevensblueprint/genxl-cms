@@ -22,10 +22,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# TODO: Currently we do not have access to our db in the build environment
-# so we cannot leverage the ssg feature of nextjs. Once we have a db
-# in our build environment we will change this to `pnpm run build`
-RUN corepack enable pnpm && pnpm next build --experimental-build-mode compile 
+RUN corepack enable pnpm && pnpm next build
 
 # Production image, copy all the files and run next
 FROM base AS runner
