@@ -15,13 +15,39 @@ export const CoursesBlock: Block = {
     },
     {
       name: 'filters',
-      label: 'Filter Options',
-      type: 'array',
-      labels: { singular: 'Option', plural: 'Options' },
-      admin: { description: 'Add dropdown options like “Math”, “Programming”, etc.' },
+      label: 'Filters',
+      type: 'group',
       fields: [
-        { name: 'label', type: 'text', required: true },
-        { name: 'value', type: 'text', required: true },
+        {
+          name: 'subjects',
+          type: 'array',
+          required: true,
+          fields: [
+            { name: 'label', type: 'text', required: true },
+            { name: 'value', type: 'text', required: true },
+          ],
+        },
+        {
+          name: 'grades',
+          type: 'array',
+          required: true,
+          fields: [{ name: 'Grade', type: 'number', required: true }],
+        },
+        {
+          name: 'durations',
+          type: 'array',
+          required: true,
+          fields: [{ name: 'Duration (weeks)', type: 'number', required: true }],
+        },
+        {
+          name: 'classSizes',
+          type: 'array',
+          required: true,
+          fields: [
+            { name: 'Minimum Class Size', type: 'number', required: true },
+            { name: 'Maximum Class Size', type: 'number', required: true },
+          ],
+        },
       ],
     },
 

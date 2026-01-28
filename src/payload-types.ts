@@ -234,55 +234,87 @@ export interface Page {
       }
     | DonationFormBlock
     | {
-        image: string | Media;
         title: string;
-        grade: string;
-        duration: string;
-        classSize: string;
+        image?: (string | null) | Media;
         /**
-         * Use same category as dropdown for filtering courses
-         */
-        category: string;
-        buttonLabel: string;
-        /**
-         * Paste a URL or a site-relative slug like /courses/scratch
+         * URL or slug to navigate to when clicking the card (e.g. /courses/scratch)
          */
         buttonHref?: string | null;
+        /**
+         * Used for filtering courses
+         */
+        grade: {
+          minGrade: number;
+          maxGrade: number;
+        };
+        /**
+         * Used for filtering courses
+         */
+        duration: number;
+        /**
+         * Used for filtering courses
+         */
+        classSize: number;
+        /**
+         * Used for filtering courses
+         */
+        subject: string;
         id?: string | null;
         blockName?: string | null;
         blockType: 'courseCard';
       }
     | {
         title?: string | null;
-        /**
-         * Add dropdown options like “Math”, “Programming”, etc.
-         */
-        filters?:
-          | {
-              label: string;
-              value: string;
-              id?: string | null;
-            }[]
-          | null;
+        filters: {
+          subjects: {
+            label: string;
+            value: string;
+            id?: string | null;
+          }[];
+          grades: {
+            Grade: number;
+            id?: string | null;
+          }[];
+          durations: {
+            'Duration (weeks)': number;
+            id?: string | null;
+          }[];
+          classSizes: {
+            'Minimum Class Size': number;
+            'Maximum Class Size': number;
+            id?: string | null;
+          }[];
+        };
         /**
          * Add CourseCard blocks. Set “category” for filters.
          */
         cards?:
           | {
-              image: string | Media;
               title: string;
-              grade: string;
-              duration: string;
-              classSize: string;
+              image?: (string | null) | Media;
               /**
-               * Use same category as dropdown for filtering courses
-               */
-              category: string;
-              buttonLabel: string;
-              /**
-               * Paste a URL or a site-relative slug like /courses/scratch
+               * URL or slug to navigate to when clicking the card (e.g. /courses/scratch)
                */
               buttonHref?: string | null;
+              /**
+               * Used for filtering courses
+               */
+              grade: {
+                minGrade: number;
+                maxGrade: number;
+              };
+              /**
+               * Used for filtering courses
+               */
+              duration: number;
+              /**
+               * Used for filtering courses
+               */
+              classSize: number;
+              /**
+               * Used for filtering courses
+               */
+              subject: string;
               id?: string | null;
               blockName?: string | null;
               blockType: 'courseCard';
@@ -926,7 +958,6 @@ export interface NumbersBlockMobile {
   blockName?: string | null;
   blockType: 'numbersBlockMobile';
 }
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MeatballMenuBlock".
@@ -1334,14 +1365,18 @@ export interface PagesSelect<T extends boolean = true> {
         courseCard?:
           | T
           | {
-              image?: T;
               title?: T;
-              grade?: T;
+              image?: T;
+              buttonHref?: T;
+              grade?:
+                | T
+                | {
+                    minGrade?: T;
+                    maxGrade?: T;
+                  };
               duration?: T;
               classSize?: T;
-              category?: T;
-              buttonLabel?: T;
-              buttonHref?: T;
+              subject?: T;
               id?: T;
               blockName?: T;
             };
@@ -1352,9 +1387,32 @@ export interface PagesSelect<T extends boolean = true> {
               filters?:
                 | T
                 | {
-                    label?: T;
-                    value?: T;
-                    id?: T;
+                    subjects?:
+                      | T
+                      | {
+                          label?: T;
+                          value?: T;
+                          id?: T;
+                        };
+                    grades?:
+                      | T
+                      | {
+                          Grade?: T;
+                          id?: T;
+                        };
+                    durations?:
+                      | T
+                      | {
+                          'Duration (weeks)'?: T;
+                          id?: T;
+                        };
+                    classSizes?:
+                      | T
+                      | {
+                          'Minimum Class Size'?: T;
+                          'Maximum Class Size'?: T;
+                          id?: T;
+                        };
                   };
               cards?:
                 | T
@@ -1362,14 +1420,18 @@ export interface PagesSelect<T extends boolean = true> {
                     courseCard?:
                       | T
                       | {
-                          image?: T;
                           title?: T;
-                          grade?: T;
+                          image?: T;
+                          buttonHref?: T;
+                          grade?:
+                            | T
+                            | {
+                                minGrade?: T;
+                                maxGrade?: T;
+                              };
                           duration?: T;
                           classSize?: T;
-                          category?: T;
-                          buttonLabel?: T;
-                          buttonHref?: T;
+                          subject?: T;
                           id?: T;
                           blockName?: T;
                         };
@@ -1569,8 +1631,6 @@ export interface NumbersBlockMobileSelect<T extends boolean = true> {
   id?: T;
   blockName?: T;
 }
-
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MeatballMenuBlock_select".

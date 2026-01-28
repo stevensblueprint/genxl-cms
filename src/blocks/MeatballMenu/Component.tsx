@@ -21,7 +21,7 @@ export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, background
   const bgStyle = backgroundColor ? { backgroundColor } : undefined
 
   return (
-    <section className="my-16 py-16" style={bgStyle}>
+    <section className="!-mt-16 py-16" style={bgStyle}>
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
         {title && (

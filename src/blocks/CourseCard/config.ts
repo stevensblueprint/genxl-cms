@@ -4,41 +4,56 @@ export const CourseCard: Block = {
   slug: 'courseCard',
   labels: { singular: 'Course Card', plural: 'Course Cards' },
   fields: [
+    { name: 'title', type: 'text', required: true, label: 'Course name' },
     {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
-      required: true,
-      label: 'Card Image',
-    },
-    { name: 'title', type: 'text', required: true, label: 'Course name' },
-
-    { name: 'grade', type: 'text', required: true, label: 'Grade' },
-    { name: 'duration', type: 'text', required: true, label: 'Duration' },
-    { name: 'classSize', type: 'text', required: true, label: 'Class size' },
-    {
-      name: 'category',
-      type: 'text',
-      required: true,
-      label: 'Category',
-      admin: { description: 'Use same category as dropdown for filtering courses' },
-    },
-
-    {
-      name: 'buttonLabel',
-      type: 'text',
-      required: true,
-      label: 'Button label',
-      defaultValue: 'Information',
+      required: false,
+      label: 'Background Image',
     },
     {
       name: 'buttonHref',
       type: 'text',
       required: false,
-      label: 'Button URL or slug',
+      label: 'Link URL',
       admin: {
-        description: 'Paste a URL or a site-relative slug like /courses/scratch',
+        description: 'URL or slug to navigate to when clicking the card (e.g. /courses/scratch)',
       },
+    },
+
+    // Hidden fields for filtering (kept for backwards compatibility)
+    {
+      name: 'grade',
+      type: 'group',
+      required: true,
+      label: 'Grade',
+      fields: [
+        { name: 'minGrade', type: 'number', required: true },
+        { name: 'maxGrade', type: 'number', required: true },
+      ],
+      admin: { description: 'Used for filtering courses' },
+    },
+    {
+      name: 'duration',
+      type: 'number',
+      required: true,
+      label: 'Duration (weeks)',
+      admin: { description: 'Used for filtering courses' },
+    },
+    {
+      name: 'classSize',
+      type: 'number',
+      required: true,
+      label: 'Class Size',
+      admin: { description: 'Used for filtering courses' },
+    },
+    {
+      name: 'subject',
+      type: 'text',
+      required: true,
+      label: 'Subject',
+      admin: { description: 'Used for filtering courses' },
     },
   ],
 }
