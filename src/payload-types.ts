@@ -311,6 +311,34 @@ export interface Page {
     | MeatballMenuBlock
     | Map
     | PopUpModalBlock
+    | {
+        heading?: string | null;
+        image?: (string | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'twoColumnHero';
+      }
+    | {
+        rolesHeading?: string | null;
+        roles?:
+          | {
+              title: string;
+              description: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'volunteerRoles';
+      }
+    | {
+        contactHeading?: string | null;
+        contactSubheading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1412,6 +1440,37 @@ export interface PagesSelect<T extends boolean = true> {
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
         map?: T | MapSelect<T>;
         popupModalBlock?: T | PopUpModalBlockSelect<T>;
+        twoColumnHero?:
+          | T
+          | {
+              heading?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        volunteerRoles?:
+          | T
+          | {
+              rolesHeading?: T;
+              roles?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
+              contactHeading?: T;
+              contactSubheading?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
