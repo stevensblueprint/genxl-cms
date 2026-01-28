@@ -15,9 +15,16 @@ type Props = {
   subtitle?: string | null
   backgroundColor?: string | null
   items?: MeatballMenuItem[] | null
+  isLast?: boolean
 }
 
-export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, backgroundColor, items }) => {
+export const MeatballMenuBlock: React.FC<Props> = ({
+  title,
+  subtitle,
+  backgroundColor,
+  items,
+  isLast,
+}) => {
   const bgStyle = backgroundColor ? { backgroundColor } : undefined
 
   return (
@@ -25,7 +32,7 @@ export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, background
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
         {title && (
-          <h2 className="text-center text-3xl md:text-4xl font-bold tracking-tight mb-2 text-black">
+          <h2 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2 text-black">
             {title}
           </h2>
         )}
