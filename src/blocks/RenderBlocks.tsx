@@ -19,6 +19,9 @@ import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
 import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 import { Map } from '@/blocks/Map/Component'
 import { PopUpModalBlock } from '@/blocks/PopUpModalBlock/Component'
+import { TwoColumnHeroBlock } from '@/blocks/TwoColumnHero/Component'
+import { VolunteerRolesBlock } from '@/blocks/VolunteerRolesBlock/Component'
+import { ContactFormBlock } from '@/blocks/ContactFormBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -38,6 +41,9 @@ const blockComponents = {
   meatballMenu: MeatballMenuBlock,
   map: Map,
   popupModalBlock: PopUpModalBlock,
+  twoColumnHero: TwoColumnHeroBlock,
+  volunteerRoles: VolunteerRolesBlock,
+  contactForm: ContactFormBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -59,8 +65,14 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               const isLastBlock = index === blocks.length - 1
               const isMeatballMenu = blockType === 'meatballMenu'
+              const isHero = blockType === 'twoColumnHero'
+              // Remove top margin for hero block to eliminate whitespace at top of page
               // Remove bottom margin for last meatballMenu block to eliminate whitespace before footer
-              const wrapperClass = isLastBlock && isMeatballMenu ? 'mt-16 mb-0' : 'my-16'
+              const wrapperClass = isHero
+                ? 'my-0'
+                : isLastBlock && isMeatballMenu
+                  ? 'mt-16 mb-0'
+                  : 'my-16'
 
               return (
                 <div className={wrapperClass} key={index}>
