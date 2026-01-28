@@ -18,6 +18,7 @@ import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
 import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 import { Map } from '@/blocks/Map/Component'
+import { PopUpModalBlock } from '@/blocks/PopUpModalBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -36,6 +37,7 @@ const blockComponents = {
   numbersBlockMobile: NumbersBlockMobile,
   meatballMenu: MeatballMenuBlock,
   map: Map,
+  popupModalBlock: PopUpModalBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -55,9 +57,14 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType] as React.ComponentType<any>
 
             if (Block) {
+              const isLastBlock = index === blocks.length - 1
+              const isMeatballMenu = blockType === 'meatballMenu'
+              // Remove bottom margin for last meatballMenu block to eliminate whitespace before footer
+              const wrapperClass = isLastBlock && isMeatballMenu ? 'mt-16 mb-0' : 'my-16'
+
               return (
-                <div className="my-16" key={index}>
-                  <Block {...block} disableInnerContainer />
+                <div className={wrapperClass} key={index}>
+                  <Block {...block} disableInnerContainer isLast={isLastBlock && isMeatballMenu} />
                 </div>
               )
             }

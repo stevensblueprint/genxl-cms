@@ -342,6 +342,7 @@ export interface Page {
     | NumbersBlockMobile
     | MeatballMenuBlock
     | Map
+    | PopUpModalBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1030,6 +1031,19 @@ export interface Map {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock".
+ */
+export interface PopUpModalBlock {
+  title: string;
+  description: string;
+  emailPlaceholder: string;
+  buttonText: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'popupModalBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1460,6 +1474,7 @@ export interface PagesSelect<T extends boolean = true> {
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
         map?: T | MapSelect<T>;
+        popupModalBlock?: T | PopUpModalBlockSelect<T>;
       };
   meta?:
     | T
@@ -1673,6 +1688,18 @@ export interface MapSelect<T extends boolean = true> {
         latitude?: T;
         longitude?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock_select".
+ */
+export interface PopUpModalBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  emailPlaceholder?: T;
+  buttonText?: T;
   id?: T;
   blockName?: T;
 }
