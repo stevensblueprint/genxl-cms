@@ -342,6 +342,35 @@ export interface Page {
     | NumbersBlockMobile
     | MeatballMenuBlock
     | Map
+    | PopUpModalBlock
+    | {
+        heading?: string | null;
+        image?: (string | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'twoColumnHero';
+      }
+    | {
+        rolesHeading?: string | null;
+        roles?:
+          | {
+              title: string;
+              description: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'volunteerRoles';
+      }
+    | {
+        contactHeading?: string | null;
+        contactSubheading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1030,6 +1059,19 @@ export interface Map {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock".
+ */
+export interface PopUpModalBlock {
+  title: string;
+  description: string;
+  emailPlaceholder: string;
+  buttonText: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'popupModalBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1460,6 +1502,38 @@ export interface PagesSelect<T extends boolean = true> {
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
         map?: T | MapSelect<T>;
+        popupModalBlock?: T | PopUpModalBlockSelect<T>;
+        twoColumnHero?:
+          | T
+          | {
+              heading?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        volunteerRoles?:
+          | T
+          | {
+              rolesHeading?: T;
+              roles?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
+              contactHeading?: T;
+              contactSubheading?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1673,6 +1747,18 @@ export interface MapSelect<T extends boolean = true> {
         latitude?: T;
         longitude?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock_select".
+ */
+export interface PopUpModalBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  emailPlaceholder?: T;
+  buttonText?: T;
   id?: T;
   blockName?: T;
 }
