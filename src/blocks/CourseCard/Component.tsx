@@ -22,7 +22,7 @@ export const CourseCardBlock: React.FC<Props> = ({ title, image, buttonHref }) =
 
   const CardContent = (
     <article
-      className="relative rounded-2xl overflow-hidden shadow-md border border-gray-200 aspect-[1/1] w-full group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+      className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-md border border-gray-200 aspect-[1/1] w-full group cursor-pointer transition-all duration-300 hover:scale-[1.02]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -51,9 +51,9 @@ export const CourseCardBlock: React.FC<Props> = ({ title, image, buttonHref }) =
       />
 
       {/* Title at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+      <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4 lg:p-6 text-center">
         <h3
-          className={`text-3xl font-semibold tracking-tight text-right text-${textColor} drop-shadow-md`}
+          className={`text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold tracking-tight text-right text-${textColor} drop-shadow-md`}
         >
           {title}
         </h3>
