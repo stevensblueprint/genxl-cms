@@ -17,13 +17,7 @@ type Props = {
   items?: MeatballMenuItem[] | null
 }
 
-export const MeatballMenuBlock: React.FC<Props> = ({
-  title,
-  subtitle,
-  backgroundColor,
-  items,
-  isLast,
-}) => {
+export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, backgroundColor, items }) => {
   const bgStyle = backgroundColor ? { backgroundColor } : undefined
 
   return (
