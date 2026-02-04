@@ -63,7 +63,7 @@ export const CourseCardBlock: React.FC<Props> = ({ title, image, buttonHref }) =
 
   if (buttonHref) {
     return (
-      <a href={buttonHref} className="block w-full">
+      <a href={buttonHref} rel="noopener noreferrer" target="_blank" className="block w-full">
         {CardContent}
       </a>
     )
