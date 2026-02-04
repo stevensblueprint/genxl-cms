@@ -15,20 +15,13 @@ type Props = {
   subtitle?: string | null
   backgroundColor?: string | null
   items?: MeatballMenuItem[] | null
-  isLast?: boolean
 }
 
-export const MeatballMenuBlock: React.FC<Props> = ({
-  title,
-  subtitle,
-  backgroundColor,
-  items,
-  isLast,
-}) => {
+export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, backgroundColor, items }) => {
   const bgStyle = backgroundColor ? { backgroundColor } : undefined
 
   return (
-    <section className={`py-20 lg:py-24 -mt-20 ${isLast ? '-mb-24' : '-mb-16'}`} style={bgStyle}>
+    <section className="!-mt-16 py-16" style={bgStyle}>
       <div className="container mx-auto max-w-6xl">
         {/* Header Section */}
         {title && (
