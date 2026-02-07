@@ -89,4 +89,13 @@ export default buildConfig({
     },
     tasks: [],
   },
+  endpoints: [
+    {
+      path: '/health',
+      method: 'get',
+      handler: async (_) => {
+        return Response.json({ status: 'ok' })
+      },
+    },
+  ],
 })
