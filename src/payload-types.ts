@@ -337,6 +337,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'about';
       }
+    | AccordionBlock
     | CarouselBlock
     | NumbersBlock
     | NumbersBlockMobile
@@ -945,6 +946,23 @@ export interface DonationFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock".
+ */
+export interface AccordionBlock {
+  title?: string | null;
+  questions?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CarouselBlock".
  */
 export interface CarouselBlock {
@@ -1497,6 +1515,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        accordion?: T | AccordionBlockSelect<T>;
         carousel?: T | CarouselBlockSelect<T>;
         numbersBlock?: T | NumbersBlockSelect<T>;
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
@@ -1660,6 +1679,22 @@ export interface DonationFormBlockSelect<T extends boolean = true> {
     | T
     | {
         formBlock?: T | FormBlockSelect<T>;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock_select".
+ */
+export interface AccordionBlockSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
       };
   id?: T;
   blockName?: T;
