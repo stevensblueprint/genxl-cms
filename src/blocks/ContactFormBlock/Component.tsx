@@ -13,7 +13,7 @@ export const ContactFormBlock: React.FC<Props> = ({
 }) => {
   return (
     <section className="w-full bg-white">
-      <div className="container py-16 md:py-20">
+      <div className="container py-0 md:py-0">
         <div className="max-w-2xl mx-auto">
           {contactHeading && (
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center">
