@@ -35,7 +35,7 @@ export const VolunteerRolesBlock: React.FC<Props> = ({
 
   return (
     <section className="w-full bg-white">
-      <div className="container py-16 md:py-20">
+      <div className="container py-0 md:py-0">
         {rolesHeading && (
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center mb-10">
             {rolesHeading}
