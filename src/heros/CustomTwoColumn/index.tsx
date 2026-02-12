@@ -50,19 +50,19 @@ export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, rich
           className="hidden lg:block absolute inset-0 z-10"
           style={{
             background:
-              'linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.75) 40%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 60%, transparent 70%)',
+              'linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.2) 60%, transparent 70%)',
           }}
         />
 
         {/* Desktop: Full content overlay */}
         <div className="hidden lg:block relative z-20 w-full container mx-auto pl-0 pr-4 lg:pr-8 pt-28 lg:pt-32 pb-16 lg:pb-24">
           <div className="max-w-2xl">
-            <div className="space-y-3 lg:space-y-4">
+            <div>
               {/* Rich Text Content */}
               {richText && (
                 <div className="prose prose-lg max-w-none">
                   <RichText
-                    className="[&_h1]:text-white [&_h1]:text-5xl [&_h1]:lg:text-6xl [&_h1]:xl:text-7xl [&_h1]:font-bold [&_h1]:mb-2 [&_h1]:leading-tight [&_h2]:text-white [&_h2]:text-4xl [&_h2]:lg:text-6xl [&_h2]:xl:text-7xl [&_h2]:font-bold [&_h2]:leading-tight [&_h3]:text-white [&_h3]:text-3xl [&_h3]:lg:text-5xl [&_h3]:xl:text-6xl [&_h3]:font-bold [&_h3]:leading-tight [&_h4]:text-white [&_h4]:text-2xl [&_h4]:lg:text-4xl [&_h4]:xl:text-5xl [&_h4]:font-bold [&_h4]:leading-tight [&_p]:text-white [&_p]:text-lg [&_p]:lg:text-2xl [&_p]:xl:text-3xl [&_p]:leading-tight"
+                    className="[&_h1]:text-white [&_h1]:text-5xl [&_h1]:lg:text-6xl [&_h1]:xl:text-7xl [&_h1]:font-bold [&_h1]:mb-2 [&_h1]:leading-tight [&_h2]:text-white [&_h2]:text-4xl [&_h2]:lg:text-6xl [&_h2]:xl:text-7xl [&_h2]:font-bold [&_h2]:leading-tight [&_h3]:text-white [&_h3]:text-3xl [&_h3]:lg:text-5xl [&_h3]:xl:text-6xl [&_h3]:font-bold [&_h3]:leading-tight [&_h4]:text-white [&_h4]:text-2xl [&_h4]:lg:text-4xl [&_h4]:xl:text-5xl [&_h4]:font-bold [&_h4]:leading-tight [&_p]:text-white [&_p]:text-md [&_p]:lg:text-lg [&_p]:xl:text-xl [&_p]:leading-tight"
                     data={richText}
                     enableGutter={false}
                   />
