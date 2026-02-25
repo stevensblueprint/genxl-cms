@@ -1,3 +1,5 @@
+.pnpm-store/
+.idea/
 build
 dist / media
 node_modules

@@ -6,7 +6,13 @@ export const Users: CollectionConfig = {
   slug: 'users',
   access: {
     admin: authenticated,
-    create: authenticated,
+    create: ({ req }) => {
+      if (!req.user) return false;
+
+      const root = "zidanni.clerigo@gmail.com";
+
+      return req.user.email == root;
+    },
     delete: authenticated,
     read: authenticated,
     update: authenticated,
