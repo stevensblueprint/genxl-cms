@@ -23,9 +23,7 @@ export const AccordionBlock: React.FC<Props> = ({ title, questions = [] }) => {
 
   return (
     <div className="w-full flex flex-col items-center mt-10 mb-20">
-      {title && (
-        <h2 className="text-4xl font-bold text-black pt-10 text-center">{title}</h2>
-      )}
+      {title && <h2 className="text-4xl font-bold text-black py-10 text-center">{title}</h2>}
       <div className="w-full md:w-2/3 mx-auto px-4">
         {questions.map((question, index) => {
           const questionId = question.id || `question-${index}`

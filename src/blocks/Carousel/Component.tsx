@@ -12,10 +12,12 @@ type Props = {
 export const CarouselBlock: React.FC<Props> = ({ title, description, reviews }) => {
   return (
     <div className="flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-black text-center mb-2 sm:mb-3">
+      <h2 className="text-3xl lg:text-5xl sm:text-3xl font-bold text-black text-center mb-2 sm:mb-3">
         {title}
       </h2>
-      <p className="text-base sm:text-lg text-black mb-4 sm:mb-7 text-center px-2">{description}</p>
+      <p className="text-base sm:text-lg lg:text-2xl text-black mb-4 sm:mb-7 text-center px-2">
+        {description}
+      </p>
       <Carousel
         className="w-full h-full mx-auto my-auto py-4 sm:py-6 md:py-8 lg:py-10 relative"
         opts={{

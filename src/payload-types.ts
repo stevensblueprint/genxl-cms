@@ -1016,6 +1016,18 @@ export interface MeatballMenuBlock {
    * Enter a hex color code (e.g., #F5F5F5)
    */
   backgroundColor?: string | null;
+  /**
+   * Enter a hex color code (e.g., #000000)
+   */
+  fontColor?: string | null;
+  /**
+   * Enter the font size in pixels (e.g., 16)
+   */
+  fontSize?: number | null;
+  /**
+   * Enter the font weight (e.g., 400)
+   */
+  fontWeight?: number | null;
   items?:
     | {
         icon?: (string | null) | Media;
@@ -1748,6 +1760,9 @@ export interface MeatballMenuBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   backgroundColor?: T;
+  fontColor?: T;
+  fontSize?: T;
+  fontWeight?: T;
   items?:
     | T
     | {
