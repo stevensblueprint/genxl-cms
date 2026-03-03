@@ -1,34 +1,34 @@
-import type { GlobalConfig } from 'payload'
+import type { Block } from 'payload'
 
-// import { link } from '@/fields/link'
-import { revalidateAccordion } from './hooks/revalidateAccordion'
-
-export const Accordion: GlobalConfig = {
+export const Accordion: Block = {
   slug: 'accordion',
-  access: {
-    read: () => true,
+  interfaceName: 'AccordionBlock',
+  labels: {
+    plural: 'Accordions',
+    singular: 'Accordion',
   },
   fields: [
     {
       name: 'title',
       type: 'text',
+      required: true,
     },
     {
       name: 'questions',
       type: 'array',
+      required: true,
       fields: [
         {
           name: 'question',
           type: 'text',
+          required: true,
         },
         {
           name: 'answer',
           type: 'text',
+          required: true,
         },
       ],
     },
   ],
-  hooks: {
-    afterChange: [revalidateAccordion],
-  },
 }

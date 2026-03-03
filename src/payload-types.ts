@@ -337,6 +337,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'about';
       }
+    | AccordionBlock
     | CarouselBlock
     | NumbersBlock
     | NumbersBlockMobile
@@ -945,6 +946,21 @@ export interface DonationFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock".
+ */
+export interface AccordionBlock {
+  title: string;
+  questions: {
+    question: string;
+    answer: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CarouselBlock".
  */
 export interface CarouselBlock {
@@ -998,6 +1014,18 @@ export interface MeatballMenuBlock {
    * Enter a hex color code (e.g., #F5F5F5)
    */
   backgroundColor?: string | null;
+  /**
+   * Enter a hex color code (e.g., #000000)
+   */
+  fontColor?: string | null;
+  /**
+   * Enter the font size in pixels (e.g., 16)
+   */
+  fontSize?: number | null;
+  /**
+   * Enter the font weight (e.g., 400)
+   */
+  fontWeight?: number | null;
   items?:
     | {
         icon?: (string | null) | Media;
@@ -1497,6 +1525,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        accordion?: T | AccordionBlockSelect<T>;
         carousel?: T | CarouselBlockSelect<T>;
         numbersBlock?: T | NumbersBlockSelect<T>;
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
@@ -1666,6 +1695,22 @@ export interface DonationFormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock_select".
+ */
+export interface AccordionBlockSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CarouselBlock_select".
  */
 export interface CarouselBlockSelect<T extends boolean = true> {
@@ -1713,6 +1758,9 @@ export interface MeatballMenuBlockSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
   backgroundColor?: T;
+  fontColor?: T;
+  fontSize?: T;
+  fontWeight?: T;
   items?:
     | T
     | {

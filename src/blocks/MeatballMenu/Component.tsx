@@ -15,9 +15,20 @@ type Props = {
   subtitle?: string | null
   backgroundColor?: string | null
   items?: MeatballMenuItem[] | null
+  fontColor?: string | null
+  fontSize?: number | null
+  fontWeight?: number | null
 }
 
-export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, backgroundColor, items }) => {
+export const MeatballMenuBlock: React.FC<Props> = ({
+  title,
+  subtitle,
+  backgroundColor,
+  items,
+  fontColor = '#000000',
+  fontSize = 16,
+  fontWeight = 400,
+}) => {
   const bgStyle = backgroundColor ? { backgroundColor } : undefined
 
   return (
@@ -40,7 +51,7 @@ export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, background
               <div key={index} className="flex flex-col items-center">
                 {/* Icon */}
                 {item.icon && (
-                  <div className="mb-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center">
+                  <div className="mb-4 w-40 h-40 md:w-40 md:h-40 flex items-center justify-center text-center">
                     {typeof item.icon === 'object' ? (
                       <Media
                         resource={item.icon as MediaDoc}
@@ -58,14 +69,28 @@ export const MeatballMenuBlock: React.FC<Props> = ({ title, subtitle, background
 
                 {/* Caption */}
                 {item.caption && (
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-center text-black">
+                  <h3
+                    style={{
+                      color: fontColor ? fontColor : '#000000',
+                      fontWeight: fontWeight ? fontWeight : 400,
+                      fontSize: fontSize ? fontSize : 16,
+                    }}
+                    className="font-bold mb-3 text-center"
+                  >
                     {item.caption}
                   </h3>
                 )}
 
                 {/* Subcaption */}
                 {item.subcaption && (
-                  <p className="text-sm md:text-base text-left w-full text-black">
+                  <p
+                    style={{
+                      color: '#000000',
+                      fontWeight: fontWeight + 'px',
+                      fontSize: fontSize ? fontSize / 2 : 16 + 'px',
+                    }}
+                    className="text-sm md:text-base text-center w-full"
+                  >
                     {item.subcaption}
                   </p>
                 )}
