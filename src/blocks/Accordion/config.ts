@@ -11,18 +11,22 @@ export const Accordion: Block = {
     {
       name: 'title',
       type: 'text',
+      required: true,
     },
     {
       name: 'questions',
       type: 'array',
+      required: true,
       fields: [
         {
           name: 'question',
           type: 'text',
+          required: true,
         },
         {
           name: 'answer',
           type: 'text',
+          required: true,
         },
       ],
     },

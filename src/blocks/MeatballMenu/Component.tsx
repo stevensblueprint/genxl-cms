@@ -72,8 +72,8 @@ export const MeatballMenuBlock: React.FC<Props> = ({
                   <h3
                     style={{
                       color: fontColor ? fontColor : '#000000',
-                      fontWeight: fontWeight + 'px',
-                      fontSize: fontSize + 'px',
+                      fontWeight: fontWeight ? fontWeight : 400,
+                      fontSize: fontSize ? fontSize : 16,
                     }}
                     className="font-bold mb-3 text-center"
                   >

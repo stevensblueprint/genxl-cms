@@ -949,14 +949,12 @@ export interface DonationFormBlock {
  * via the `definition` "AccordionBlock".
  */
 export interface AccordionBlock {
-  title?: string | null;
-  questions?:
-    | {
-        question?: string | null;
-        answer?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  title: string;
+  questions: {
+    question: string;
+    answer: string;
+    id?: string | null;
+  }[];
   id?: string | null;
   blockName?: string | null;
   blockType: 'accordion';

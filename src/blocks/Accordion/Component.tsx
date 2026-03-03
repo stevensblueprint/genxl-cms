@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import { ChevronRight } from 'lucide-react'
 
 type Question = {
-  id?: string
-  question?: string
-  answer?: string
+  id: string
+  question: string
+  answer: string
 }
 
 type Props = {
-  title?: string
-  questions?: Question[]
+  title: string
+  questions: Question[]
 }
 
 export const AccordionBlock: React.FC<Props> = ({ title, questions = [] }) => {
@@ -33,6 +33,9 @@ export const AccordionBlock: React.FC<Props> = ({ title, questions = [] }) => {
               <button
                 className="text-xl md:text-2xl font-bold text-black p-6 md:p-10 text-left w-full flex justify-between items-center hover:bg-blue-50 transition-colors"
                 onClick={() => toggleItem(questionId)}
+                aria-expanded={isOpen}
+                aria-controls={`accordion-panel-${questionId}`}
+                id={`accordion-trigger-${questionId}`}
               >
                 <span>{question.question}</span>
                 <span
@@ -45,6 +48,9 @@ export const AccordionBlock: React.FC<Props> = ({ title, questions = [] }) => {
                 className={`overflow-hidden transition-all duration-500 ease-in-out ${
                   isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
+                id={`accordion-panel-${questionId}`}
+                role="region"
+                aria-labelledby={`accordion-trigger-${questionId}`}
               >
                 <div className="px-6 md:px-10 py-6 text-gray-700 text-base md:text-lg">
                   {question.answer}
