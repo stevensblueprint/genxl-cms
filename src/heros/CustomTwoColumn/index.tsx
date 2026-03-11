@@ -8,7 +8,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 
-export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, richText, badge }) => {
+export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, rich
               {richText && (
                 <div className="prose prose-lg max-w-none w-4/5">
                   <RichText
-                    className="[&_h1]:text-white [&_h1]:text-5xl [&_h1]:lg:text-6xl [&_h1]:xl:text-7xl [&_h1]:font-bold [&_h1]:mb-2 [&_h1]:leading-tight [&_h2]:text-white [&_h2]:text-4xl [&_h2]:lg:text-6xl [&_h2]:xl:text-7xl [&_h2]:font-bold [&_h2]:leading-tight [&_h3]:text-white [&_h3]:text-3xl [&_h3]:lg:text-5xl [&_h3]:xl:text-6xl [&_h3]:font-bold [&_h3]:leading-tight [&_h4]:text-white [&_h4]:text-2xl [&_h4]:lg:text-4xl [&_h4]:xl:text-5xl [&_h4]:font-bold [&_h4]:leading-tight [&_p]:text-white [&_p]:text-lg [&_p]:lg:text-xl [&_p]:xl:text-2xl [&_p]:!leading-loose [&_p]:px-5 "
+                    className="[&_h1]:text-white [&_h1]:text-3xl [&_h1]:lg:text-4xl [&_h1]:xl:text-5xl [&_h1]:font-bold [&_h1]:mb-2 [&_h1]:leading-tight [&_h2]:text-white [&_h2]:text-4xl [&_h2]:lg:text-6xl [&_h2]:xl:text-7xl [&_h2]:font-bold [&_h2]:leading-tight [&_h3]:text-white [&_h3]:text-3xl [&_h3]:lg:text-5xl [&_h3]:xl:text-6xl [&_h3]:font-bold [&_h3]:leading-tight [&_h4]:text-white [&_h4]:text-2xl [&_h4]:lg:text-4xl [&_h4]:xl:text-5xl [&_h4]:font-bold [&_h4]:leading-tight [&_p]:text-white [&_p]:text-lg [&_p]:lg:text-lg [&_p]:xl:text-xl [&_p]:!leading-loose [&_p]:pr-20 "
                     data={richText}
                     enableGutter={false}
                   />
@@ -78,11 +78,11 @@ export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, rich
                         key={i}
                         {...link}
                         className={`
-                          px-8 py-8 rounded-full font-bold text-2xl lg:text-3xl transition-all duration-200
+                          px-10 py-8 rounded-full text-xl lg:text-2xl transition-all duration-200
                           ${
                             link.appearance === 'outline'
                               ? 'border-2 border-white text-white bg-transparent hover:bg-white/10'
-                              : 'bg-yellow-400 text-gray-900 hover:bg-yellow-500'
+                              : 'bg-yellow-300 text-gray-900 hover:bg-yellow-500'
                           }
                         `}
                       />
