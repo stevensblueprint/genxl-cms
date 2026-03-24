@@ -6,7 +6,8 @@ import type { Media as MediaDoc } from '@/payload-types'
 
 type MeatballMenuItem = {
   icon?: MediaDoc | string | null
-  caption?: string | null
+  caption1?: string | null
+  caption2?: string | null
   subcaption?: string | null
 }
 
@@ -48,7 +49,7 @@ export const MeatballMenuBlock: React.FC<Props> = ({
         {items && items.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {items.map((item, index) => (
-              <div key={index} className="flex flex-col items-center">
+              <div key={index} className="flex flex-col items-center text-center">
                 {/* Icon */}
                 {item.icon && (
                   <div className="mb-4 w-40 h-40 md:w-40 md:h-40 flex items-center justify-center text-center">
@@ -60,7 +61,7 @@ export const MeatballMenuBlock: React.FC<Props> = ({
                     ) : (
                       <img
                         src={item.icon as string}
-                        alt={item.caption || ''}
+                        alt={item.caption1 || ''}
                         className="w-full h-full object-contain"
                       />
                     )}
@@ -68,16 +69,32 @@ export const MeatballMenuBlock: React.FC<Props> = ({
                 )}
 
                 {/* Caption */}
-                {item.caption && (
+                {item.caption1 && (
                   <h3
                     style={{
-                      color: fontColor ? fontColor : '#000000',
-                      fontWeight: fontWeight ? fontWeight : 400,
-                      fontSize: fontSize ? fontSize : 16,
+                      color: fontColor || '#000000',
+                      fontWeight: Math.max(fontWeight || 400, 700),
+                      fontSize: fontSize ? fontSize + 6 : 28,
+                      padding: '4px',
                     }}
-                    className="font-bold mb-3 text-center"
+                    className="mb-1 text-center leading-none"
                   >
-                    {item.caption}
+                    {item.caption1}
+                  </h3>
+                )}
+
+                {/* Caption 2*/}
+                {item.caption2 && (
+                  <h3
+                    style={{
+                      color: fontColor || '#000000',
+                      fontWeight: Math.max(fontWeight || 400, 700),
+                      fontSize: fontSize ? fontSize + 6 : 28,
+                      padding: '4px',
+                    }}
+                    className="mb-1 text-center leading-none"
+                  >
+                    {item.caption2}
                   </h3>
                 )}
 
@@ -85,11 +102,12 @@ export const MeatballMenuBlock: React.FC<Props> = ({
                 {item.subcaption && (
                   <p
                     style={{
-                      color: '#000000',
-                      fontWeight: fontWeight + 'px',
-                      fontSize: fontSize ? fontSize / 2 : 16 + 'px',
+                      color: fontColor || '#000000',
+                      fontWeight: 400,
+                      fontSize: fontSize ? Math.max(fontSize - 1, 18) : 18,
+                      paddingTop: '4px',
                     }}
-                    className="text-sm md:text-base text-center w-full"
+                    className="text-center w-full max-w-[360px] mx-auto leading-tight"
                   >
                     {item.subcaption}
                   </p>
