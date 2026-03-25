@@ -31,37 +31,6 @@ export const MeatballMenu: Block = {
       },
     },
     {
-      name: 'fontColor',
-      type: 'text',
-      label: 'Font Color (Hex Code)',
-      required: false,
-      admin: {
-        description: 'Enter a hex color code (e.g., #000000)',
-        placeholder: '#000000',
-      },
-    },
-    {
-      name: 'fontSize',
-      type: 'number',
-      label: 'Font Size',
-      required: false,
-      admin: {
-        description: 'Enter the font size in pixels (e.g., 16)',
-      },
-      defaultValue: 16,
-    },
-    {
-      name: 'fontWeight',
-      type: 'number',
-      label: 'Font Weight',
-      required: false,
-      admin: {
-        description: 'Enter the font weight (e.g., 400)',
-        placeholder: '400',
-      },
-      defaultValue: 400,
-    },
-    {
       name: 'items',
       type: 'array',
       label: 'Items',
@@ -76,9 +45,15 @@ export const MeatballMenu: Block = {
           required: false,
         },
         {
-          name: 'caption',
+          name: 'caption1',
           type: 'text',
-          label: 'Caption',
+          label: 'Caption 1',
+          required: false,
+        },
+        {
+          name: 'caption2',
+          type: 'text',
+          label: 'Caption 2',
           required: false,
         },
         {
