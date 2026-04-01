@@ -22,10 +22,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# TODO: Currently we do not have access to our db in the build environment
-# so we cannot leverage the ssg feature of nextjs. Once we have a db
-# in our build environment we will change this to `pnpm run build`
-RUN corepack enable pnpm && pnpm next build --experimental-build-mode compile 
+RUN corepack enable pnpm && pnpm next build
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -53,7 +50,8 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
 # server.js is created by next build from the standalone output
 # https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD ["HOSTNAME=0.0.0.0", "node", "server.js"]
+CMD ["node", "server.js"]
