@@ -118,7 +118,7 @@ export const CustomTwoColumnHero: React.FC<Page['hero']> = ({ links, media, rich
                     key={i}
                     {...link}
                     className={`
-                      px-7 py-3.5 rounded-full font-medium text-base transition-all duration-200
+                      px-7 py-3.5 rounded-full font-small text-base transition-all duration-200
                       ${
                         link.appearance === 'outline'
                           ? 'border-2 border-gray-900 text-gray-900 bg-transparent hover:bg-gray-100'
