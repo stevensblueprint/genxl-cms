@@ -28,6 +28,8 @@ import { PopUpModalBlock } from '../../blocks/PopUpModalBlock/config'
 import { TwoColumnHero } from '../../blocks/TwoColumnHero/config'
 import { VolunteerRoles } from '../../blocks/VolunteerRolesBlock/config'
 import { ContactForm } from '../../blocks/ContactFormBlock/config'
+import { MeetTheTeam } from '../../blocks/MeetTheTeam/config'
+import { Chapters } from '../../blocks/Chapters/config'
 
 import {
   MetaDescriptionField,
@@ -113,6 +115,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 TwoColumnHero,
                 VolunteerRoles,
                 ContactForm,
+                MeetTheTeam,
+                Chapters,
               ],
 
               required: true,
