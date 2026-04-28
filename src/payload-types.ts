@@ -372,6 +372,40 @@ export interface Page {
         blockName?: string | null;
         blockType: 'contactForm';
       }
+    | {
+        heading?: string | null;
+        members?:
+          | {
+              name: string;
+              role: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'meetTheTeam';
+      }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        columns?:
+          | {
+              chapters?:
+                | {
+                    name: string;
+                    url?: string | null;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chapters';
+      }
   )[];
   meta?: {
     title?: string | null;
@@ -1549,6 +1583,42 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               contactHeading?: T;
               contactSubheading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        meetTheTeam?:
+          | T
+          | {
+              heading?: T;
+              members?:
+                | T
+                | {
+                    name?: T;
+                    role?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        chapters?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              columns?:
+                | T
+                | {
+                    chapters?:
+                      | T
+                      | {
+                          name?: T;
+                          url?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

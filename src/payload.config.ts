@@ -26,13 +26,25 @@ export default buildConfig({
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeDashboard: ['@/components/BeforeDashboard'],
       graphics: {
         Logo: '@/components/AdminLogo',
-        Icon: '@/components/AdminLogo'
-      }
+        Icon: '@/components/AdminLogo',
+      },
+      views: {
+        // Replaces the default Payload dashboard at `/admin` with the welcome
+        // navigation page (SEO Dashboard / CMS Dashboard choice).
+        dashboard: {
+          Component: '@/admin/views/Welcome#WelcomeView',
+          exact: true,
+          path: '/',
+        },
+        // Renders the Google Analytics / Search Console dashboard at
+        // `/admin/seo-dashboard`. Linked from the welcome screen.
+        seoDashboard: {
+          Component: '@/admin/views/SeoDashboard#SeoDashboardView',
+          path: '/seo-dashboard',
+        },
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),

@@ -23,6 +23,8 @@ import { PopUpModalBlock } from '@/blocks/PopUpModalBlock/Component'
 import { TwoColumnHeroBlock } from '@/blocks/TwoColumnHero/Component'
 import { VolunteerRolesBlock } from '@/blocks/VolunteerRolesBlock/Component'
 import { ContactFormBlock } from '@/blocks/ContactFormBlock/Component'
+import { MeetTheTeamBlock } from '@/blocks/MeetTheTeam/Component'
+import { ChaptersBlock } from '@/blocks/Chapters/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -46,6 +48,8 @@ const blockComponents = {
   twoColumnHero: TwoColumnHeroBlock,
   volunteerRoles: VolunteerRolesBlock,
   contactForm: ContactFormBlock,
+  meetTheTeam: MeetTheTeamBlock,
+  chapters: ChaptersBlock,
 }
 
 export const RenderBlocks: React.FC<{

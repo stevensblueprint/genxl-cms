@@ -31,7 +31,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <header
-      className="bg-black border-b border-gray-800 relative z-20"
+      className="bg-black border-b border-gray-800 relative z-50"
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <div className="container mx-auto px-4">
