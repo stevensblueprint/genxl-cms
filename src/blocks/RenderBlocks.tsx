@@ -19,12 +19,7 @@ import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
 import { MeatballMenuBlock } from '@/blocks/MeatballMenu/Component'
 import { Map } from '@/blocks/Map/Component'
-import { PopUpModalBlock } from '@/blocks/PopUpModalBlock/Component'
-import { TwoColumnHeroBlock } from '@/blocks/TwoColumnHero/Component'
-import { VolunteerRolesBlock } from '@/blocks/VolunteerRolesBlock/Component'
-import { ContactFormBlock } from '@/blocks/ContactFormBlock/Component'
-import { MeetTheTeamBlock } from '@/blocks/MeetTheTeam/Component'
-import { ChaptersBlock } from '@/blocks/Chapters/Component'
+import { VolunteerBlock } from '@/blocks/VolunteerBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -44,12 +39,7 @@ const blockComponents = {
   numbersBlockMobile: NumbersBlockMobile,
   meatballMenu: MeatballMenuBlock,
   map: Map,
-  popupModalBlock: PopUpModalBlock,
-  twoColumnHero: TwoColumnHeroBlock,
-  volunteerRoles: VolunteerRolesBlock,
-  contactForm: ContactFormBlock,
-  meetTheTeam: MeetTheTeamBlock,
-  chapters: ChaptersBlock,
+  volunteer: VolunteerBlock,
 }
 
 export const RenderBlocks: React.FC<{
