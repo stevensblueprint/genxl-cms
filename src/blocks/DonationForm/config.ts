@@ -1,5 +1,4 @@
 import type { Block } from 'payload'
-import { FormBlock } from '../Form/config'
 
 export const DonationForm: Block = {
   slug: 'donate',
@@ -13,16 +12,49 @@ export const DonationForm: Block = {
       name: 'heading',
       type: 'text',
       label: 'Heading',
+      defaultValue: 'Support genxl',
     },
     {
       name: 'description',
       type: 'textarea',
       label: 'Description',
+      defaultValue: 'Make a donation, make a difference',
     },
     {
-      name: 'form',
-      type: 'blocks',
-      blocks: [FormBlock],
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Background Image',
+      required: true,
+    },
+    {
+      name: 'donationAmounts',
+      type: 'array',
+      label: 'Donation Amount Buttons',
+      minRows: 1,
+      maxRows: 4,
+      defaultValue: [
+        {
+          amount: 100,
+        },
+        {
+          amount: 50,
+        },
+        {
+          amount: 25,
+        },
+        {
+          amount: 10,
+        },
+      ],
+      fields: [
+        {
+          name: 'amount',
+          type: 'number',
+          label: 'Amount',
+          required: true,
+        },
+      ],
     },
   ],
 }
