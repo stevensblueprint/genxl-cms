@@ -234,55 +234,87 @@ export interface Page {
       }
     | DonationFormBlock
     | {
-        image: string | Media;
         title: string;
-        grade: string;
-        duration: string;
-        classSize: string;
+        image?: (string | null) | Media;
         /**
-         * Use same category as dropdown for filtering courses
-         */
-        category: string;
-        buttonLabel: string;
-        /**
-         * Paste a URL or a site-relative slug like /courses/scratch
+         * URL or slug to navigate to when clicking the card (e.g. /courses/scratch)
          */
         buttonHref?: string | null;
+        /**
+         * Used for filtering courses
+         */
+        grade: {
+          minGrade: number;
+          maxGrade: number;
+        };
+        /**
+         * Used for filtering courses
+         */
+        duration: number;
+        /**
+         * Used for filtering courses
+         */
+        classSize: number;
+        /**
+         * Used for filtering courses
+         */
+        subject: string;
         id?: string | null;
         blockName?: string | null;
         blockType: 'courseCard';
       }
     | {
         title?: string | null;
-        /**
-         * Add dropdown options like “Math”, “Programming”, etc.
-         */
-        filters?:
-          | {
-              label: string;
-              value: string;
-              id?: string | null;
-            }[]
-          | null;
+        filters: {
+          subjects: {
+            label: string;
+            value: string;
+            id?: string | null;
+          }[];
+          grades: {
+            Grade: number;
+            id?: string | null;
+          }[];
+          durations: {
+            'Duration (weeks)': number;
+            id?: string | null;
+          }[];
+          classSizes: {
+            'Minimum Class Size': number;
+            'Maximum Class Size': number;
+            id?: string | null;
+          }[];
+        };
         /**
          * Add CourseCard blocks. Set “category” for filters.
          */
         cards?:
           | {
-              image: string | Media;
               title: string;
-              grade: string;
-              duration: string;
-              classSize: string;
+              image?: (string | null) | Media;
               /**
-               * Use same category as dropdown for filtering courses
-               */
-              category: string;
-              buttonLabel: string;
-              /**
-               * Paste a URL or a site-relative slug like /courses/scratch
+               * URL or slug to navigate to when clicking the card (e.g. /courses/scratch)
                */
               buttonHref?: string | null;
+              /**
+               * Used for filtering courses
+               */
+              grade: {
+                minGrade: number;
+                maxGrade: number;
+              };
+              /**
+               * Used for filtering courses
+               */
+              duration: number;
+              /**
+               * Used for filtering courses
+               */
+              classSize: number;
+              /**
+               * Used for filtering courses
+               */
+              subject: string;
               id?: string | null;
               blockName?: string | null;
               blockType: 'courseCard';
@@ -305,6 +337,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'about';
       }
+    | AccordionBlock
     | CarouselBlock
     | NumbersBlock
     | NumbersBlockMobile
@@ -904,6 +937,21 @@ export interface DonationFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock".
+ */
+export interface AccordionBlock {
+  title: string;
+  questions: {
+    question: string;
+    answer: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'accordion';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CarouselBlock".
  */
 export interface CarouselBlock {
@@ -960,7 +1008,8 @@ export interface MeatballMenuBlock {
   items?:
     | {
         icon?: (string | null) | Media;
-        caption?: string | null;
+        caption1?: string | null;
+        caption2?: string | null;
         subcaption?: string | null;
         id?: string | null;
       }[]
@@ -1015,6 +1064,19 @@ export interface Map {
   id?: string | null;
   blockName?: string | null;
   blockType: 'map';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock".
+ */
+export interface PopUpModalBlock {
+  title: string;
+  description: string;
+  emailPlaceholder: string;
+  buttonText: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'popupModalBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1353,14 +1415,18 @@ export interface PagesSelect<T extends boolean = true> {
         courseCard?:
           | T
           | {
-              image?: T;
               title?: T;
-              grade?: T;
+              image?: T;
+              buttonHref?: T;
+              grade?:
+                | T
+                | {
+                    minGrade?: T;
+                    maxGrade?: T;
+                  };
               duration?: T;
               classSize?: T;
-              category?: T;
-              buttonLabel?: T;
-              buttonHref?: T;
+              subject?: T;
               id?: T;
               blockName?: T;
             };
@@ -1371,9 +1437,32 @@ export interface PagesSelect<T extends boolean = true> {
               filters?:
                 | T
                 | {
-                    label?: T;
-                    value?: T;
-                    id?: T;
+                    subjects?:
+                      | T
+                      | {
+                          label?: T;
+                          value?: T;
+                          id?: T;
+                        };
+                    grades?:
+                      | T
+                      | {
+                          Grade?: T;
+                          id?: T;
+                        };
+                    durations?:
+                      | T
+                      | {
+                          'Duration (weeks)'?: T;
+                          id?: T;
+                        };
+                    classSizes?:
+                      | T
+                      | {
+                          'Minimum Class Size'?: T;
+                          'Maximum Class Size'?: T;
+                          id?: T;
+                        };
                   };
               cards?:
                 | T
@@ -1381,14 +1470,18 @@ export interface PagesSelect<T extends boolean = true> {
                     courseCard?:
                       | T
                       | {
-                          image?: T;
                           title?: T;
-                          grade?: T;
+                          image?: T;
+                          buttonHref?: T;
+                          grade?:
+                            | T
+                            | {
+                                minGrade?: T;
+                                maxGrade?: T;
+                              };
                           duration?: T;
                           classSize?: T;
-                          category?: T;
-                          buttonLabel?: T;
-                          buttonHref?: T;
+                          subject?: T;
                           id?: T;
                           blockName?: T;
                         };
@@ -1412,6 +1505,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        accordion?: T | AccordionBlockSelect<T>;
         carousel?: T | CarouselBlockSelect<T>;
         numbersBlock?: T | NumbersBlockSelect<T>;
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
@@ -1572,6 +1666,22 @@ export interface DonationFormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AccordionBlock_select".
+ */
+export interface AccordionBlockSelect<T extends boolean = true> {
+  title?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CarouselBlock_select".
  */
 export interface CarouselBlockSelect<T extends boolean = true> {
@@ -1623,7 +1733,8 @@ export interface MeatballMenuBlockSelect<T extends boolean = true> {
     | T
     | {
         icon?: T;
-        caption?: T;
+        caption1?: T;
+        caption2?: T;
         subcaption?: T;
         id?: T;
       };
@@ -1653,6 +1764,18 @@ export interface MapSelect<T extends boolean = true> {
         latitude?: T;
         longitude?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PopUpModalBlock_select".
+ */
+export interface PopUpModalBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  emailPlaceholder?: T;
+  buttonText?: T;
   id?: T;
   blockName?: T;
 }

@@ -45,9 +45,15 @@ export const MeatballMenu: Block = {
           required: false,
         },
         {
-          name: 'caption',
+          name: 'caption1',
           type: 'text',
-          label: 'Caption',
+          label: 'Caption 1',
+          required: false,
+        },
+        {
+          name: 'caption2',
+          type: 'text',
+          label: 'Caption 2',
           required: false,
         },
         {

@@ -13,6 +13,7 @@ import { SponsorsPartnersBlock } from '@/blocks/SponsorsPartners/Component'
 import { CourseCardBlock } from '@/blocks/CourseCard/Component'
 import { CoursesBlock } from '@/blocks/Courses/Component'
 import { AboutBlock } from '@/blocks/About/Component'
+import { AccordionBlock } from '@/blocks/Accordion/Component'
 import { CarouselBlock } from '@/blocks/Carousel/Component'
 import { NumbersBlock } from '@/blocks/NumbersBlock/Component'
 import { NumbersBlockMobile } from '@/blocks/NumbersBlockMobile/Component'
@@ -32,6 +33,7 @@ const blockComponents = {
   courseCard: CourseCardBlock,
   courses: CoursesBlock,
   about: AboutBlock,
+  accordion: AccordionBlock,
   carousel: CarouselBlock,
   numbersBlock: NumbersBlock,
   numbersBlockMobile: NumbersBlockMobile,
@@ -57,9 +59,20 @@ export const RenderBlocks: React.FC<{
             const Block = blockComponents[blockType] as React.ComponentType<any>
 
             if (Block) {
+              const isLastBlock = index === blocks.length - 1
+              const isMeatballMenu = blockType === 'meatballMenu'
+              const isHero = blockType === 'twoColumnHero'
+              // Remove top margin for hero block to eliminate whitespace at top of page
+              // Remove bottom margin for last meatballMenu block to eliminate whitespace before footer
+              const wrapperClass = isHero
+                ? 'my-0'
+                : isLastBlock && isMeatballMenu
+                  ? 'mt-16 mb-0'
+                  : 'my-16'
+
               return (
-                <div className="my-16" key={index}>
-                  <Block {...block} disableInnerContainer />
+                <div className={wrapperClass} key={index}>
+                  <Block {...block} disableInnerContainer isLast={isLastBlock && isMeatballMenu} />
                 </div>
               )
             }
