@@ -973,7 +973,13 @@ export interface Gallery {
 export interface DonationFormBlock {
   heading?: string | null;
   description?: string | null;
-  form?: FormBlock[] | null;
+  backgroundImage: string | Media;
+  donationAmounts?:
+    | {
+        amount: number;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'donate';
@@ -1744,10 +1750,12 @@ export interface GallerySelect<T extends boolean = true> {
 export interface DonationFormBlockSelect<T extends boolean = true> {
   heading?: T;
   description?: T;
-  form?:
+  backgroundImage?: T;
+  donationAmounts?:
     | T
     | {
-        formBlock?: T | FormBlockSelect<T>;
+        amount?: T;
+        id?: T;
       };
   id?: T;
   blockName?: T;
