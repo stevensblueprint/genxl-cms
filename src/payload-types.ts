@@ -343,9 +343,15 @@ export interface Page {
     | NumbersBlockMobile
     | MeatballMenuBlock
     | Map
+    | PopUpModalBlock
     | {
-        heroTitle?: string | null;
-        heroImage?: (string | null) | Media;
+        heading?: string | null;
+        image?: (string | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'twoColumnHero';
+      }
+    | {
         rolesHeading?: string | null;
         roles?:
           | {
@@ -355,13 +361,50 @@ export interface Page {
               id?: string | null;
             }[]
           | null;
-        contact?: {
-          contactHeading?: string | null;
-          contactSubheading?: string | null;
-        };
         id?: string | null;
         blockName?: string | null;
-        blockType: 'volunteer';
+        blockType: 'volunteerRoles';
+      }
+    | {
+        contactHeading?: string | null;
+        contactSubheading?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'contactForm';
+      }
+    | {
+        heading?: string | null;
+        members?:
+          | {
+              name: string;
+              role: string;
+              image?: (string | null) | Media;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'meetTheTeam';
+      }
+    | {
+        heading?: string | null;
+        subheading?: string | null;
+        columns?:
+          | {
+              chapters?:
+                | {
+                    name: string;
+                    url?: string | null;
+                    newTab?: boolean | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'chapters';
       }
   )[];
   meta?: {
@@ -1511,11 +1554,18 @@ export interface PagesSelect<T extends boolean = true> {
         numbersBlockMobile?: T | NumbersBlockMobileSelect<T>;
         meatballMenu?: T | MeatballMenuBlockSelect<T>;
         map?: T | MapSelect<T>;
-        volunteer?:
+        popupModalBlock?: T | PopUpModalBlockSelect<T>;
+        twoColumnHero?:
           | T
           | {
-              heroTitle?: T;
-              heroImage?: T;
+              heading?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        volunteerRoles?:
+          | T
+          | {
               rolesHeading?: T;
               roles?:
                 | T
@@ -1525,11 +1575,49 @@ export interface PagesSelect<T extends boolean = true> {
                     image?: T;
                     id?: T;
                   };
-              contact?:
+              id?: T;
+              blockName?: T;
+            };
+        contactForm?:
+          | T
+          | {
+              contactHeading?: T;
+              contactSubheading?: T;
+              id?: T;
+              blockName?: T;
+            };
+        meetTheTeam?:
+          | T
+          | {
+              heading?: T;
+              members?:
                 | T
                 | {
-                    contactHeading?: T;
-                    contactSubheading?: T;
+                    name?: T;
+                    role?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        chapters?:
+          | T
+          | {
+              heading?: T;
+              subheading?: T;
+              columns?:
+                | T
+                | {
+                    chapters?:
+                      | T
+                      | {
+                          name?: T;
+                          url?: T;
+                          newTab?: T;
+                          id?: T;
+                        };
+                    id?: T;
                   };
               id?: T;
               blockName?: T;
